@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-  # The central C2 server to receive beacon messages [cite: 9, 17]
   c2_server:
     container_name: c2_server
     image: python:3.9-slim
@@ -9,7 +8,6 @@ services:
     networks:
       - micro_internet
 
-  # A simple DNS responder for the lab [cite: 7]
   dns:
     container_name: dns
     image: busybox
@@ -17,7 +15,6 @@ services:
     networks:
       - micro_internet
 
-  # Vulnerable HTTP application [cite: 6]
   webserver:
     container_name: webserver
     image: python:3.9-slim
@@ -25,15 +22,15 @@ services:
     networks:
       - micro_internet
 
-  # Service where "sensitive" files live [cite: 8]
   fileshare:
     container_name: fileshare
     image: busybox
     command: sleep infinity
+    volumes:
+      - ./shared_data:/data
     networks:
       - micro_internet
 
-  # Host with a simulated vulnerability (e.g., debug port) [cite: 9, 14]
   victim:
     container_name: victim
     image: python:3.9-slim
@@ -41,16 +38,22 @@ services:
     networks:
       - micro_internet
 
-  # The initial Python worm container [cite: 10]
   malware:
+    build: .
     container_name: malware
-    image: python:3.9-slim
-    command: sleep infinity
+    command: python3 worm.py c2_server dns webserver fileshare victim
+    volumes:
+      - ./shared_data:/data
     networks:
       - micro_internet
+    depends_on:
+      - c2_server
+      - dns
+      - webserver
+      - fileshare
+      - victim
 
-# All containers live inside the same isolated network [cite: 11]
 networks:
   micro_internet:
     driver: bridge
-    internal: true # Ensures no traffic leaves this environment [cite: 11]
+    internal: true
