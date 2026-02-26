@@ -1,0 +1,123 @@
+version: '3.8'
+
+services:
+
+  # WEB APP
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - micro_internet
+    depends_on:
+      - api
+
+  # FLASK SERVER 
+
+  api:
+    container_name: api
+    build:
+      context: ./api
+    volumes:
+      - ./uploads:/uploads
+    ports:
+      - "8000:8000"
+    networks:
+      - micro_internet
+
+  # LAB TARGETS 
+
+  dns:
+    container_name: dns
+    image: busybox
+    command: sleep infinity
+    networks:
+      - micro_internet
+
+  webserver:
+    container_name: webserver
+    image: python:3.9-slim
+    command: python3 -u -m http.server 80
+    networks:
+      - micro_internet
+
+  fileshare:
+    container_name: fileshare
+    image: busybox
+    command: sleep infinity
+    volumes:
+      - ./shared_data:/data
+    networks:
+      - micro_internet
+
+  victim:
+    container_name: victim
+    image: python:3.9-slim
+    command: python3 -u -m http.server 8888
+    networks:
+      - micro_internet
+
+  # --- DEFENSE LAYER ---
+
+  ids:
+    container_name: ids
+    build:
+      context: ./ids
+    volumes:
+      - ./ids/logs:/logs
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - micro_internet
+    depends_on:
+      - frontend
+      - webserver
+      - victim
+
+  ips:
+    container_name: ips
+    build:
+      context: ./ips
+    volumes:
+      - ./ids/logs:/logs:ro
+      - ./ips/blocklist:/blocklist
+    networks:
+      - micro_internet
+    depends_on:
+      - ids
+
+  honeypot:
+    container_name: honeypot
+    image: python:3.9-slim
+    command: python3 -u -m http.server 2222
+    networks:
+      - micro_internet
+
+networks:
+  micro_internet:
+    driver: bridge
+    internal: true
+
+
+  # # --- ML WORM ---
+
+  # malware:
+  #   build: .
+  #   container_name: malware
+  #   command: python3 worm.py api frontend dns webserver fileshare victim honeypot
+  #   volumes:
+  #     - ./shared_data:/data
+  #   networks:
+  #     - micro_internet
+  #   depends_on:
+  #     - ids
+  #     - ips
+  #     - honeypot
+  #     - frontend
+  #     - api
+  #     - dns
+  #     - webserver
+  #     - fileshare
+  #     - victim

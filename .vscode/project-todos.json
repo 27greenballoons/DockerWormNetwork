@@ -1,0 +1,12 @@
+[
+  {
+    "id": "1772065574550",
+    "text": "Test the frontend and see if malicious worm file can be uploaded and brought to the server and spread from there",
+    "completed": false
+  },
+  {
+    "id": "1772065497154",
+    "text": "Have gemini-cli edit the docker contianers and make new ones for the new assets added to docker-compose.yaml",
+    "completed": false
+  }
+]
