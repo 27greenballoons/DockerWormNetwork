@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab Control Center</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Network Lab API</h1>
+        
+        <div class="section">
+            <h3>Upload Payload</h3>
+            <input type="file" id="fileInput">
+            <button onclick="uploadFile()">Upload .py script</button>
+        </div>
+
+        <div class="section">
+            <h3>Uploaded Files (Click to Execute)</h3>
+            <ul id="fileList">
+                {% for file in files %}
+                <li>
+                    <span>{{ file }}</span>
+                    <button class="run-btn" onclick="executeFile('{{ file }}')">Run Exploit</button>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            await fetch('/upload', {method: 'POST', body: formData});
+            location.reload();
+        }
+
+        async function executeFile(filename) {
+            const res = await fetch('/exec', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({file: filename})
+            });
+            const data = await res.json();
+            alert(data.status === 'executing' ? "Worm Started!" : "Error: " + data.error);
+        }
+    </script>
+</body>
+</html>

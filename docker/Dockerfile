@@ -1,16 +1,25 @@
-# Use the same base image as the other Python services
+# 1. Start with a lightweight Python base image
 FROM python:3.9-slim
 
-# Set the working directory inside the container
+# 2. Set the working directory inside the container
 WORKDIR /app
 
-# Install the requests library required by the script
-RUN pip install --no-cache-dir requests
+# 3. Install Flask (for the web UI) and Requests (to trigger exploits)
+# We do this before copying code to use Docker's layer caching
+RUN pip install --no-cache-dir flask requests
 
-# Copy the worm script into the container
-COPY worm.py .
+# 4. Copy the entire 'flask' folder into the container's '/app'
+# Since the build context is the project root, we pull from the subfolder
+COPY flask/ .
 
-# Ensure Python logs are sent straight to the terminal/dashboard
+# 5. Create the upload landing zone and ensure it has write permissions
+RUN mkdir -p /uploads && chmod 777 /uploads
+
+# 6. Force Python to print logs to the terminal immediately (no buffering)
 ENV PYTHONUNBUFFERED=1
 
-# The command to run the worm will be specified in the docker-compose.yaml
+# 7. Inform Docker the container listens on port 8000
+EXPOSE 8000
+
+# 8. Start the Flask server
+CMD ["python", "app.py"]
