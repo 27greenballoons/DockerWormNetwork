@@ -14,30 +14,32 @@ sudo apt-get install -y \
     iproute2 sshpass net-tools tree default-mysql-client \
     docker.io docker-compose
 
-# Configure Docker permissions
+# Configure Docker permissions for future sessions
 sudo usermod -aG docker $USER
 
 echo -e "${BLUE}[*] Phase 2: Installing Host-Side Python SDK...${NC}"
-# Installs packages needed for dashboard.py and host control
+# Use break-system-packages for newer Ubuntu versions (23.04+)
 pip3 install docker requests flask --break-system-packages || pip3 install docker requests flask
 
 echo -e "${BLUE}[*] Phase 3: Pre-pulling Docker Images (including Snort)...${NC}"
-docker pull python:3.9-slim
-docker pull busybox:latest
-docker pull jasonish/snort:latest
+# Using sudo here to avoid permission errors before logout
+sudo docker pull python:3.9-slim
+sudo docker pull busybox:latest
+sudo docker pull jasonish/snort:latest
 
 echo -e "${BLUE}[*] Phase 4: Creating Airgap Portable Bundle...${NC}"
 mkdir -p ./airgap_bundle/python_wheels
 
 # 1. Export Docker Images to Tarball
 echo "[>] Saving Docker images to airgap_bundle/wormnet_images.tar..."
-docker save -o ./airgap_bundle/wormnet_images.tar \
+sudo docker save -o ./airgap_bundle/wormnet_images.tar \
     jasonish/snort:latest \
     python:3.9-slim \
     busybox:latest
+sudo chmod 666 ./airgap_bundle/wormnet_images.tar
 
-# 2. Download Python Wheels for Offline Install
-echo "[>] Downloading Python wheels to airgap_bundle/python_wheels/..."
+# 2. Download Python Wheels with all sub-dependencies
+echo "[>] Downloading recursive Python wheels to airgap_bundle/python_wheels/..."
 pip3 download docker requests flask -d ./airgap_bundle/python_wheels/
 
 echo -e "${GREEN}==================================================================${NC}"
@@ -45,7 +47,8 @@ echo -e "${GREEN}SUCCESS: Lab setup and Airgap Bundle ready!${NC}"
 echo -e "${GREEN}==================================================================${NC}"
 echo -e "${BLUE}TO DEPLOY IN AIRGAP ENVIRONMENT:${NC}"
 echo -e "1. Move the 'airgap_bundle' folder to your isolated VM."
-echo -e "2. Run: ${NC}docker load -i ./airgap_bundle/wormnet_images.tar"
-echo -e "3. Run: ${NC}pip3 install --no-index --find-links=./airgap_bundle/python_wheels/ docker requests flask"
+echo -e "2. Load images: ${NC}sudo docker load -i ./airgap_bundle/wormnet_images.tar"
+echo -e "3. Setup Venv:  ${NC}python3 -m venv lab_env && source lab_env/bin/activate"
+echo -e "4. Install Libs: ${NC}pip install --no-index --find-links=./airgap_bundle/python_wheels/ docker requests flask"
 echo -e "${GREEN}==================================================================${NC}"
-echo -e "Note: Restart your terminal session now to enable Docker permissions."
+echo -e "Note: To use docker without 'sudo', please log out and back in now."
