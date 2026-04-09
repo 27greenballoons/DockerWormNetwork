@@ -1,6 +1,0 @@
-FROM python:3.9-slim
-# Install the library while we still have internet during the build phase
-RUN pip install docker
-WORKDIR /app
-COPY dashboard.py .
-CMD ["python", "dashboard.py"]

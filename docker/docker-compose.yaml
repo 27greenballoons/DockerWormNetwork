@@ -11,7 +11,7 @@ services:
     volumes:
       - ./flask/templates:/app/templates
       - ./flask/static:/app/static
-      - ./shared_data:/uploads
+      - ../shared_data:/uploads
     ports:
       - "8000:8000"
     networks:
@@ -22,7 +22,7 @@ services:
     container_name: webserver
     image: python:3.9-slim
     volumes:
-      - ./python/vulnerable_server.py:/vulnerable_server.py
+      - ../python/vulnerable_server.py:/vulnerable_server.py
     command: python3 -u /vulnerable_server.py
     networks:
       - micro_internet
@@ -47,19 +47,28 @@ services:
     image: busybox
     command: sleep infinity
     volumes:
-      - ./shared_data:/data
+      - ../shared_data:/data
     networks:
       - micro_internet
 
   # --- IDS/IPS (Imported Snort) ---
   # ids:
   #   container_name: ids
-  #   image: jasonish/snort
+  #   image: jasonish/snort:latest
+  #   cap_add:
+  #     - NET_ADMIN
+  #     - NET_RAW
   #   volumes:
-  #     - ./ids/rules:/etc/snort/rules
+  #     - ./ids/rules:/etc/snort/rules:ro
   #     - ./ids/logs:/var/log/snort
-  #   # Running snort with custom local rules
-  #   command: -i eth0 -c /etc/snort/rules/local.rules -A console
+  #   # Run snort in IDS mode with custom rules
+  #   # Using snort-local.conf which includes local.rules
+  #   command: >
+  #     sh -c "snort -i eth0 
+  #     -c /etc/snort/rules/snort-local.conf 
+  #     -A console 
+  #     -l /var/log/snort 
+  #     2>&1"
   #   networks:
   #     - micro_internet
 
@@ -75,14 +84,8 @@ services:
   #   depends_on:
   #     - ids
 
-  honeypot:
-    container_name: honeypot
-    image: python:3.9-slim
-    command: python3 -u -m http.server 2222
-    networks:
-      - micro_internet
-
 networks:
   micro_internet:
     driver: bridge
-    internal: true
+
+

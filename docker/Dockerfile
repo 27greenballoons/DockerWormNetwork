@@ -4,12 +4,18 @@ FROM python:3.9-slim
 # 2. Set the working directory inside the container
 WORKDIR /app
 
-# 3. Install Flask (for the web UI) and Requests (to trigger exploits)
-# We do this before copying code to use Docker's layer caching
+# 3. Install necessary system tools for the worm and Flask dependencies
+RUN apt-get update && apt-get install -y \
+    iproute2 \
+    wget \
+    curl \
+    sshpass \
+    default-mysql-client \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN pip install --no-cache-dir flask requests
 
 # 4. Copy the entire 'flask' folder into the container's '/app'
-# Since the build context is the project root, we pull from the subfolder
 COPY flask/ .
 
 # 5. Create the upload landing zone and ensure it has write permissions

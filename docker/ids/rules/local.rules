@@ -1,0 +1,55 @@
+# Snort Rules for DockerWormNetwork Pentest Lab
+# Detects worm propagation and exploitation attempts
+
+# --- WORM PROPAGATION DETECTION ---
+
+# Alert on worm.py download attempts (primary propagation method)
+alert tcp any any -> any $HTTP_PORTS (msg:"WORM: worm.py download detected"; content:"GET"; http_method; content:"/worm.py"; http_uri; classtype:trojan-activity; sid:1000001; rev:1;)
+
+# Alert on curl piped to python3 (common payload execution)
+alert tcp any any -> any $HTTP_PORTS (msg:"WORM: curl|python3 payload execution"; content:"curl"; http_client_body; content:"python3"; http_client_body; classtype:trojan-activity; sid:1000002; rev:1;)
+
+# --- COMMAND INJECTION DETECTION ---
+
+# Command injection via ping endpoint (webserver vulnerable endpoint)
+alert tcp any any -> any $HTTP_PORTS (msg:"EXPLOIT: Command injection in ping parameter"; content:"/ping?ip="; http_uri; content:";"; http_uri; classtype:web-application-attack; sid:1000010; rev:1;)
+alert tcp any any -> any $HTTP_PORTS (msg:"EXPLOIT: Command injection via pipe"; content:"/ping?ip="; http_uri; content:"|"; http_uri; classtype:web-application-attack; sid:1000011; rev:1;)
+
+# curl/wget in URL parameters (common cmd injection)
+alert tcp any any -> any $HTTP_PORTS (msg:"EXPLOIT: curl in HTTP parameter"; content:"curl%20"; http_uri; classtype:web-application-attack; sid:1000012; rev:1;)
+alert tcp any any -> any $HTTP_PORTS (msg:"EXPLOIT: wget in HTTP parameter"; content:"wget%20"; http_uri; classtype:web-application-attack; sid:1000013; rev:1;)
+
+# --- RCE ENDPOINT DETECTION ---
+
+# Access to /exec endpoint (both GET and POST indicate exploitation)
+alert tcp any any -> any $HTTP_PORTS (msg:"EXPLOIT: Access to RCE /exec endpoint"; content:"/exec"; http_uri; classtype:web-application-attack; sid:1000020; rev:1;)
+
+# Python code in HTTP POST body (RCE via exec endpoint)
+alert tcp any any -> any $HTTP_PORTS (msg:"EXPLOIT: Python code in POST body"; content:"import"; http_client_body; content:"python"; http_client_body; classtype:web-application-attack; sid:1000021; rev:1;)
+
+# --- REDIS EXPLOITATION ---
+
+# Redis CONFIG SET commands (attempt to write malicious files)
+alert tcp any any -> any 6379 (msg:"EXPLOIT: Redis CONFIG SET dir command"; content:"CONFIG"; content:"SET"; content:"dir"; classtype:attempted-admin; sid:1000030; rev:1;)
+alert tcp any any -> any 6379 (msg:"EXPLOIT: Redis CONFIG SET dbfilename"; content:"CONFIG"; content:"SET"; content:"dbfilename"; classtype:attempted-admin; sid:1000031; rev:1;)
+
+# Redis SAVE command after config changes (persistence attempt)
+alert tcp any any -> any 6379 (msg:"EXPLOIT: Redis SAVE command"; content:"SAVE"; classtype:attempted-admin; sid:1000032; rev:1;)
+
+# --- NETWORK SCANNING DETECTION ---
+
+# Port sweep detection (worm scanning multiple hosts)
+alert tcp any any -> any 22 (msg:"SCAN: SSH connection attempt"; flags:S; threshold:type both, track by_src, count 5, seconds 60; classtype:attempted-recon; sid:1000040; rev:1;)
+alert tcp any any -> any 80 (msg:"SCAN: HTTP connection attempt"; flags:S; threshold:type both, track by_src, count 10, seconds 30; classtype:attempted-recon; sid:1000041; rev:1;)
+alert tcp any any -> any 8080 (msg:"SCAN: HTTP alt port connection attempt"; flags:S; threshold:type both, track by_src, count 10, seconds 30; classtype:attempted-recon; sid:1000042; rev:1;)
+alert tcp any any -> any 8888 (msg:"SCAN: HTTP 8888 port connection attempt"; flags:S; threshold:type both, track by_src, count 5, seconds 30; classtype:attempted-recon; sid:1000043; rev:1;)
+alert tcp any any -> any 6379 (msg:"SCAN: Redis port connection attempt"; flags:S; threshold:type both, track by_src, count 3, seconds 30; classtype:attempted-recon; sid:1000044; rev:1;)
+
+# --- SUSPICIOUS TRAFFIC PATTERNS ---
+
+# Outbound connections from compromised containers (data exfil)
+alert tcp any any -> any any (msg:"INFO: Outbound TCP connection from container"; flags:S; classtype:policy-violation; sid:1000050; rev:1;)
+
+# Large data transfer after compromise (potential exfiltration)
+alert tcp any any -> any any (msg:"INFO: Large outbound data transfer"; content_len:>100000; classtype:policy-violation; sid:1000051; rev:1;)
+

@@ -31,7 +31,7 @@ class VulnerableHandler(http.server.SimpleHTTPRequestHandler):
         else:
             super().do_GET()
 
-    def do_POST(self):
+    def do_POST(self):  # type: ignore[override]
         # Bonus: POST endpoint for reverse shell
         if self.path == '/exec':
             content_length = int(self.headers['Content-Length'])

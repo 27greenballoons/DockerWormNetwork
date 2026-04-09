@@ -1,0 +1,51 @@
+#!/bin/bash
+# DockerWormNetwork - Unified Deployment & Airgap Preparation Script
+# Target: Ubuntu VM (Authorized for CS 499 Capstone)
+set -e
+
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+echo -e "${BLUE}[*] Phase 1: Installing System Dependencies...${NC}"
+sudo apt-get update && sudo apt-get upgrade -y
+sudo apt-get install -y \
+    curl wget git python3 python3-pip python3-venv \
+    iproute2 sshpass net-tools tree default-mysql-client \
+    docker.io docker-compose
+
+# Configure Docker permissions
+sudo usermod -aG docker $USER
+
+echo -e "${BLUE}[*] Phase 2: Installing Host-Side Python SDK...${NC}"
+# Installs packages needed for dashboard.py and host control
+pip3 install docker requests flask --break-system-packages || pip3 install docker requests flask
+
+echo -e "${BLUE}[*] Phase 3: Pre-pulling Docker Images (including Snort)...${NC}"
+docker pull python:3.9-slim
+docker pull busybox:latest
+docker pull jasonish/snort:latest
+
+echo -e "${BLUE}[*] Phase 4: Creating Airgap Portable Bundle...${NC}"
+mkdir -p ./airgap_bundle/python_wheels
+
+# 1. Export Docker Images to Tarball
+echo "[>] Saving Docker images to airgap_bundle/wormnet_images.tar..."
+docker save -o ./airgap_bundle/wormnet_images.tar \
+    jasonish/snort:latest \
+    python:3.9-slim \
+    busybox:latest
+
+# 2. Download Python Wheels for Offline Install
+echo "[>] Downloading Python wheels to airgap_bundle/python_wheels/..."
+pip3 download docker requests flask -d ./airgap_bundle/python_wheels/
+
+echo -e "${GREEN}==================================================================${NC}"
+echo -e "${GREEN}SUCCESS: Lab setup and Airgap Bundle ready!${NC}"
+echo -e "${GREEN}==================================================================${NC}"
+echo -e "${BLUE}TO DEPLOY IN AIRGAP ENVIRONMENT:${NC}"
+echo -e "1. Move the 'airgap_bundle' folder to your isolated VM."
+echo -e "2. Run: ${NC}docker load -i ./airgap_bundle/wormnet_images.tar"
+echo -e "3. Run: ${NC}pip3 install --no-index --find-links=./airgap_bundle/python_wheels/ docker requests flask"
+echo -e "${GREEN}==================================================================${NC}"
+echo -e "Note: Restart your terminal session now to enable Docker permissions."
