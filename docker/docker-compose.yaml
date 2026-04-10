@@ -54,7 +54,7 @@ services:
   # --- IDS/IPS (Imported Snort) ---
   # ids:
   #   container_name: ids
-  #   image: jasonish/snort:latest
+  #   image: frapsoft/snort
   #   cap_add:
   #     - NET_ADMIN
   #     - NET_RAW

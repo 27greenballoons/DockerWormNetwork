@@ -21,11 +21,11 @@ echo -e "${BLUE}[*] Phase 2: Installing Host-Side Python SDK...${NC}"
 # Use break-system-packages for newer Ubuntu versions (23.04+)
 pip3 install docker requests flask --break-system-packages || pip3 install docker requests flask
 
-echo -e "${BLUE}[*] Phase 3: Pre-pulling Docker Images (including Snort)...${NC}"
-# Using sudo here to avoid permission errors before logout
+echo -e "${BLUE}[*] Phase 3: Pre-pulling Docker Images...${NC}"
+# Use frapsoft/snort as a more reliable base image for Snort 2.x rules
 sudo docker pull python:3.9-slim
 sudo docker pull busybox:latest
-sudo docker pull jasonish/snort:latest
+sudo docker pull frapsoft/snort
 
 echo -e "${BLUE}[*] Phase 4: Creating Airgap Portable Bundle...${NC}"
 mkdir -p ./airgap_bundle/python_wheels
@@ -33,10 +33,9 @@ mkdir -p ./airgap_bundle/python_wheels
 # 1. Export Docker Images to Tarball
 echo "[>] Saving Docker images to airgap_bundle/wormnet_images.tar..."
 sudo docker save -o ./airgap_bundle/wormnet_images.tar \
-    jasonish/snort:latest \
+    frapsoft/snort \
     python:3.9-slim \
     busybox:latest
-sudo chmod 666 ./airgap_bundle/wormnet_images.tar
 
 # 2. Download Python Wheels with all sub-dependencies
 echo "[>] Downloading recursive Python wheels to airgap_bundle/python_wheels/..."
