@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y \
     default-mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir flask requests
+COPY flask/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 # 4. Copy the entire 'flask' folder into the container's '/app'
 COPY flask/ .

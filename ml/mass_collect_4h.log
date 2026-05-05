@@ -1,0 +1,1679 @@
+[2026-05-05 05:13:54] =================================================================
+[2026-05-05 05:13:54] =================================================================
+[2026-05-05 05:13:54] 4-Hour Mass Collection — CS 499 DockerWormNetwork
+[2026-05-05 05:13:54]   Rounds:         4–9  (6 rounds)
+[2026-05-05 05:13:54] 4-Hour Mass Collection — CS 499 DockerWormNetwork
+[2026-05-05 05:13:54]   Rounds:         4–9  (6 rounds)
+[2026-05-05 05:13:54]   Strategies:     ['random', 'exhaustive']
+[2026-05-05 05:13:54]   Phase duration: 460s (7.7 min) baseline + worm
+[2026-05-05 05:13:54]   Poll interval:  3s
+[2026-05-05 05:13:54]   Est. new samples: ~36,720
+[2026-05-05 05:13:54]   Strategies:     ['random', 'exhaustive']
+[2026-05-05 05:13:54]   Est. wall time:   ~4.0 h
+[2026-05-05 05:13:54]   Log: /home/greenballoons/499/DockerWormNetwork/ml/mass_collect_4h.log
+[2026-05-05 05:13:54]   Phase duration: 460s (7.7 min) baseline + worm
+[2026-05-05 05:13:54]   Poll interval:  3s
+[2026-05-05 05:13:54]   Est. new samples: ~36,720
+[2026-05-05 05:13:54]   Est. wall time:   ~4.0 h
+[2026-05-05 05:13:54]   Log: /home/greenballoons/499/DockerWormNetwork/ml/mass_collect_4h.log
+[2026-05-05 05:13:54] =================================================================
+[2026-05-05 05:13:54] =================================================================
+[2026-05-05 05:13:54] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 05:13:54] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 05:13:54] Round 4  strategy=random  |  0/12 done  |  0.00h elapsed
+[2026-05-05 05:13:54] Round 4  strategy=random  |  0/12 done  |  0.00h elapsed
+[2026-05-05 05:13:54] ─────────────────────────────────────────────────────────────────
+[2026-05-05 05:13:54] ─────────────────────────────────────────────────────────────────
+[2026-05-05 05:13:54]   [baseline] → baseline_traffic_random_4.csv
+[2026-05-05 05:13:54]   [baseline] → baseline_traffic_random_4.csv
+[*] Collecting baseline data for 460s (interval=3s)...
+[*] Ensure worm is NOT running. Only normal services should be active.
+[*] Output: /home/greenballoons/499/DockerWormNetwork/ml/data/baseline_traffic_random_4.csv
+[+] 10 samples written
+[+] 20 samples written
+[+] 30 samples written
+[+] 40 samples written
+[2026-05-05 05:14:17] =================================================================
+[2026-05-05 05:14:17] 4-Hour Mass Collection — CS 499 DockerWormNetwork
+[2026-05-05 05:14:17]   Rounds:         5–10  (6 rounds)
+[2026-05-05 05:14:17]   Strategies:     ['random', 'exhaustive']
+[2026-05-05 05:14:17]   Phase duration: 460s (7.7 min) baseline + worm
+[2026-05-05 05:14:17]   Poll interval:  3s
+[2026-05-05 05:14:17]   Est. new samples: ~36,720
+[2026-05-05 05:14:17]   Est. wall time:   ~4.0 h
+[2026-05-05 05:14:17]   Log: /home/greenballoons/499/DockerWormNetwork/ml/mass_collect_4h.log
+[2026-05-05 05:14:17] =================================================================
+[2026-05-05 05:14:17] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 05:14:17] Round 5  strategy=random  |  0/12 done  |  0.00h elapsed
+[2026-05-05 05:14:17] ─────────────────────────────────────────────────────────────────
+[2026-05-05 05:14:17]   [baseline] → baseline_traffic_random_5.csv
+[+] 50 samples written
+[+] 60 samples written
+[+] 70 samples written
+[+] 80 samples written
+[+] 90 samples written
+[+] 100 samples written
+[+] 110 samples written
+[+] 120 samples written
+[+] 130 samples written
+[+] 140 samples written
+[+] 150 samples written
+[+] 160 samples written
+[+] 170 samples written
+[+] 180 samples written
+[+] 190 samples written
+[+] 200 samples written
+[+] 210 samples written
+[+] 220 samples written
+[+] 230 samples written
+[+] 240 samples written
+[+] 250 samples written
+[+] 260 samples written
+[+] 270 samples written
+[+] 280 samples written
+[+] 290 samples written
+[+] 300 samples written
+[+] 310 samples written
+[+] 320 samples written
+[+] 330 samples written
+[+] 340 samples written
+[+] 350 samples written
+[+] 360 samples written
+[+] 370 samples written
+[+] 380 samples written
+[+] 390 samples written
+[+] 400 samples written
+[+] 410 samples written
+[+] 420 samples written
+[+] 430 samples written
+[+] 440 samples written
+[+] 450 samples written
+[+] 460 samples written
+[+] 470 samples written
+[+] 480 samples written
+[+] 490 samples written
+[+] 500 samples written
+[+] 510 samples written
+[+] 520 samples written
+[+] 530 samples written
+[+] 540 samples written
+[+] 550 samples written
+[+] 560 samples written
+[+] 570 samples written
+[+] 580 samples written
+[+] 590 samples written
+[+] 600 samples written
+[+] 610 samples written
+[+] 620 samples written
+[+] 630 samples written
+[+] 640 samples written
+[+] 650 samples written
+[+] 660 samples written
+[+] 670 samples written
+[+] 680 samples written
+[+] 690 samples written
+[+] 700 samples written
+[+] 710 samples written
+[+] 720 samples written
+[+] 730 samples written
+[+] 740 samples written
+[+] 750 samples written
+[+] 760 samples written
+[+] 770 samples written
+[+] 780 samples written
+[+] 790 samples written
+[+] 800 samples written
+[+] 810 samples written
+[+] Baseline collection complete: 810 samples → /home/greenballoons/499/DockerWormNetwork/ml/data/baseline_traffic_random_4.csv
+[2026-05-05 05:21:35] Copying worm.py → shared_data/
+[2026-05-05 05:21:35] Copying worm.py → shared_data/
+[2026-05-05 05:21:35] Launching worm inside api (strategy=random)...
+[2026-05-05 05:21:35] Launching worm inside api (strategy=random)...
+[*] 🪱 DYNAMIC WORM → 85f98eaae793 → SELF_IP=172.20.0.10 → strategy=random
+[*] 🌐 DEPLOYMENT → SELF_IP=172.20.0.10 → 1 subnets
+[*] ✓ LAB_MODE=1 — authorized lab environment, skipping isolation check
+[+] ✅ Persisted to /tmp/worm.py
+[*] 🎯 Drop server running at http://172.20.0.10:8080/worm.py
+[📋] Logged infection: 172.20.0.2 via SharedFS at 0.0s
+[+] SharedFS→172.20.0.2 Infected via /uploads
+[*] 🔍 Scanning 266 hosts (max 10 cycles)...
+
+[*] === CYCLE 1/10 ===
+[+] 🎯 2 hosts with open ports
+[>] 🦠 Infecting 172.20.0.8 → ports [5432]
+[>] 🦠 Infecting 172.20.0.4 → ports [6379]
+[+] 2 new infection attempts
+[+] Redis→172.20.0.4:6379 Infected (Cron Exploit)
+[📋] Logged infection: 172.20.0.4 via Redis at 3.47s
+
+[*] === CYCLE 2/10 ===
+[+] 🎯 2 hosts with open ports
+[>] 🦠 Infecting victim → ports [8888]
+[>] 🦠 Infecting 172.20.0.5 → ports [80][+] 2 new infection attempts
+
+[+] HTTP→victim:8888 payload delivered
+[📋] Logged infection: victim via HTTP RCE at 14.38s
+[+] HTTP→172.20.0.5:80 payload delivered
+[📋] Logged infection: 172.20.0.5 via HTTP RCE at 14.39s
+[2026-05-05 05:21:50] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 05:21:50] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 05:21:50]   [worm] → worm_traffic_random_4.csv
+[2026-05-05 05:21:50]   [worm] → worm_traffic_random_4.csv
+[*] Collecting WORM traffic data for 460s (interval=3s)...
+[*] Make sure the worm is RUNNING before starting collection!
+[*] Output: /home/greenballoons/499/DockerWormNetwork/ml/data/worm_traffic_random_4.csv
+[+] 10 samples written
+[+] 20 samples written
+
+[*] === CYCLE 3/10 ===
+[+] 🎯 2 hosts with open ports
+[>] 🦠 Infecting localhost → ports [8080]
+[>] 🦠 Infecting 172.20.0.7 → ports [9000]
+[+] 2 new infection attempts
+[+] HTTP→localhost:8080 payload delivered
+[📋] Logged infection: localhost via HTTP RCE at 25.42s
+[+] HTTP→172.20.0.7:9000 payload delivered
+[📋] Logged infection: 172.20.0.7 via HTTP RCE at 25.43s
+[2026-05-05 05:22:01] Copying worm.py → shared_data/
+[2026-05-05 05:22:01] Launching worm inside api (strategy=random)...
+[+] 30 samples written
+[+] 40 samples written
+
+[*] === CYCLE 4/10 ===
+[+] 🎯 4 hosts with open ports
+[>] 🦠 Infecting jumpbox → ports [22]
+[>] 🦠 Infecting api → ports [8080]
+[>] 🦠 Infecting 172.20.0.8 → ports [5432]
+[>] 🦠 Infecting 172.20.0.10 → ports [8080]
+[+] 4 new infection attempts
+[+] HTTP→api:8080 payload delivered
+[📋] Logged infection: api via HTTP RCE at 36.54s
+[+] HTTP→172.20.0.10:8080 payload delivered
+[📋] Logged infection: 172.20.0.10 via HTTP RCE at 36.54s
+[+] 50 samples written
+[2026-05-05 05:22:16] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 05:22:16]   [worm] → worm_traffic_random_5.csv
+[+] SSH→jumpbox:ubuntu Infected
+[📋] Logged infection: jumpbox via SSH at 42.28s
+[+] 60 samples written
+
+[*] === CYCLE 5/10 ===
+[+] 🎯 4 hosts with open ports
+[>] 🦠 Infecting 127.0.0.1 → ports [8080]
+[>] 🦠 Infecting 172.20.0.3 → ports [8888]
+[+] 2 new infection attempts
+[+] HTTP→127.0.0.1:8080 payload delivered
+[📋] Logged infection: 127.0.0.1 via HTTP RCE at 47.59s
+[+] HTTP→172.20.0.3:8888 payload delivered
+[📋] Logged infection: 172.20.0.3 via HTTP RCE at 47.59s
+[+] 70 samples written
+[+] 80 samples written
+
+[*] === CYCLE 6/10 ===
+[+] 🎯 3 hosts with open ports
+[!] No new infections (stagnant: 1)
+[+] 90 samples written
+[+] 100 samples written
+
+[*] === CYCLE 7/10 ===
+[+] 🎯 1 hosts with open ports
+[!] No new infections (stagnant: 2)
+[+] 110 samples written
+[+] 120 samples written
+
+[*] === CYCLE 8/10 ===
+[+] 🎯 5 hosts with open ports
+[>] 🦠 Infecting webserver → ports [80]
+[>] 🦠 Infecting 172.20.0.9 → ports [22]
+[>] 🦠 Infecting postgres → ports [5432]
+[+] 3 new infection attempts
+[+] HTTP→webserver:80 payload delivered
+[📋] Logged infection: webserver via HTTP RCE at 80.97s
+[+] 130 samples written
+[+] 140 samples written
+[+] SSH→172.20.0.9:ubuntu Infected
+[📋] Logged infection: 172.20.0.9 via SSH at 88.94s
+
+[*] === CYCLE 9/10 ===
+[+] 150 samples written
+[+] 🎯 2 hosts with open ports
+[!] No new infections (stagnant: 1)
+[+] 160 samples written
+
+[*] === CYCLE 10/10 ===
+[+] 170 samples written
+[+] 🎯 2 hosts with open ports
+[>] 🦠 Infecting db → ports [3306][+] 1 new infection attempts
+
+[+] 180 samples written
+[+] 190 samples written
+
+======================================================================
+[💀] CREDENTIAL HARVEST REPORT
+======================================================================
+
+[-] No database credentials harvested.
+
+======================================================================
+[💀] END OF CREDENTIAL REPORT
+======================================================================
+
+[📋] Propagation log saved → /uploads/propagation_log.csv (13 events)
+
+[*] === WORM COMPLETE ===
+[*] Strategy: random
+[*] Cycles: 10
+[*] Total infected: 13
+[*] Infected hosts: ['victim', '172.20.0.3', '172.20.0.9', '172.20.0.7', 'webserver', '172.20.0.2', 'api', '172.20.0.10', 'jumpbox', '172.20.0.5', '172.20.0.4', '127.0.0.1', 'localhost']
+[+] 200 samples written
+[+] 210 samples written
+[+] 220 samples written
+[+] 230 samples written
+[+] 240 samples written
+[+] 250 samples written
+[+] 260 samples written
+[+] 270 samples written
+[+] 280 samples written
+[+] 290 samples written
+[+] 300 samples written
+[+] 310 samples written
+[+] 320 samples written
+[+] 330 samples written
+[+] 340 samples written
+[+] 350 samples written
+[+] 360 samples written
+[+] 370 samples written
+[+] 380 samples written
+[+] 390 samples written
+[+] 400 samples written
+[+] 410 samples written
+[+] 420 samples written
+[+] 430 samples written
+[+] 440 samples written
+[+] 450 samples written
+[+] 460 samples written
+[+] 470 samples written
+[+] 480 samples written
+[+] 490 samples written
+[+] 500 samples written
+[+] 510 samples written
+[+] 520 samples written
+[+] 530 samples written
+[+] 540 samples written
+[+] 550 samples written
+[+] 560 samples written
+[+] 570 samples written
+[+] 580 samples written
+[+] 590 samples written
+[+] 600 samples written
+[+] 610 samples written
+[+] 620 samples written
+[+] 630 samples written
+[+] 640 samples written
+[+] 650 samples written
+[+] 660 samples written
+[+] 670 samples written
+[+] 680 samples written
+[+] 690 samples written
+[+] 700 samples written
+[+] 710 samples written
+[+] 720 samples written
+[+] 730 samples written
+[+] 740 samples written
+[+] 750 samples written
+[+] 760 samples written
+[+] 770 samples written
+[+] 780 samples written
+[+] 790 samples written
+[+] 800 samples written
+[+] 810 samples written
+[+] 820 samples written
+[+] 830 samples written
+[+] 840 samples written
+[+] 850 samples written
+[+] 860 samples written
+[+] Worm traffic collection complete: 860 samples → /home/greenballoons/499/DockerWormNetwork/ml/data/worm_traffic_random_4.csv
+[2026-05-05 05:29:33] Resetting lab...
+[2026-05-05 05:29:33] Resetting lab...
+[2026-05-05 05:29:58] Resetting lab...
+[2026-05-05 05:29:58] Reset exit=0
+[2026-05-05 05:29:58] Reset exit=0
+[2026-05-05 05:29:58] Waiting for api container...
+[2026-05-05 05:29:58] Waiting for api container...
+[2026-05-05 05:30:13] api container ready.
+[2026-05-05 05:30:13] api container ready.
+[2026-05-05 05:30:13] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 05:30:13] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 05:30:13] Round 4  strategy=exhaustive  |  1/12 done  |  0.27h elapsed
+[2026-05-05 05:30:13] Round 4  strategy=exhaustive  |  1/12 done  |  0.27h elapsed
+[2026-05-05 05:30:13] ─────────────────────────────────────────────────────────────────
+[2026-05-05 05:30:13] ─────────────────────────────────────────────────────────────────
+[2026-05-05 05:30:13]   [baseline] → baseline_traffic_exhaustive_4.csv
+[2026-05-05 05:30:13]   [baseline] → baseline_traffic_exhaustive_4.csv
+[*] Collecting baseline data for 460s (interval=3s)...
+[*] Ensure worm is NOT running. Only normal services should be active.
+[*] Output: /home/greenballoons/499/DockerWormNetwork/ml/data/baseline_traffic_exhaustive_4.csv
+[+] 3 samples written
+[+] 6 samples written
+[2026-05-05 05:30:22] Reset exit=0
+[2026-05-05 05:30:22] Waiting for api container...
+[+] 16 samples written
+[+] 26 samples written
+[+] 36 samples written
+[2026-05-05 05:30:37] api container ready.
+[2026-05-05 05:30:37] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 05:30:37] Round 5  strategy=exhaustive  |  1/12 done  |  0.27h elapsed
+[2026-05-05 05:30:37] ─────────────────────────────────────────────────────────────────
+[2026-05-05 05:30:37]   [baseline] → baseline_traffic_exhaustive_5.csv
+[+] 46 samples written
+[+] 56 samples written
+[+] 66 samples written
+[+] 76 samples written
+[+] 86 samples written
+[+] 96 samples written
+[+] 106 samples written
+[+] 116 samples written
+[+] 126 samples written
+[+] 136 samples written
+[+] 146 samples written
+[+] 156 samples written
+[+] 166 samples written
+[+] 176 samples written
+[+] 186 samples written
+[+] 196 samples written
+[+] 206 samples written
+[+] 216 samples written
+[+] 226 samples written
+[+] 236 samples written
+[+] 246 samples written
+[+] 256 samples written
+[+] 266 samples written
+[+] 276 samples written
+[+] 286 samples written
+[+] 296 samples written
+[+] 306 samples written
+[+] 316 samples written
+[+] 326 samples written
+[+] 336 samples written
+[+] 346 samples written
+[+] 356 samples written
+[+] 366 samples written
+[+] 376 samples written
+[+] 386 samples written
+[+] 396 samples written
+[+] 406 samples written
+[+] 416 samples written
+[+] 426 samples written
+[+] 436 samples written
+[+] 446 samples written
+[+] 456 samples written
+[+] 466 samples written
+[+] 476 samples written
+[+] 486 samples written
+[+] 496 samples written
+[+] 506 samples written
+[+] 516 samples written
+[+] 526 samples written
+[+] 536 samples written
+[+] 546 samples written
+[+] 556 samples written
+[+] 566 samples written
+[+] 576 samples written
+[+] 586 samples written
+[+] 596 samples written
+[+] 606 samples written
+[+] 616 samples written
+[+] 626 samples written
+[+] 636 samples written
+[+] 646 samples written
+[+] 656 samples written
+[+] 666 samples written
+[+] 676 samples written
+[+] 686 samples written
+[+] 696 samples written
+[+] 706 samples written
+[+] 716 samples written
+[+] 726 samples written
+[+] 736 samples written
+[+] 746 samples written
+[+] 756 samples written
+[+] 766 samples written
+[+] 776 samples written
+[+] 786 samples written
+[+] 796 samples written
+[+] 806 samples written
+[+] 816 samples written
+[+] 826 samples written
+[+] 836 samples written
+[+] 846 samples written
+[+] 856 samples written
+[+] 866 samples written
+[+] 876 samples written
+[+] Baseline collection complete: 876 samples → /home/greenballoons/499/DockerWormNetwork/ml/data/baseline_traffic_exhaustive_4.csv
+[2026-05-05 05:37:54] Copying worm.py → shared_data/
+[2026-05-05 05:37:54] Copying worm.py → shared_data/
+[2026-05-05 05:37:54] Launching worm inside api (strategy=exhaustive)...
+[2026-05-05 05:37:54] Launching worm inside api (strategy=exhaustive)...
+[*] 🪱 DYNAMIC WORM → 989b8ab677f6 → SELF_IP=172.20.0.10 → strategy=exhaustive
+[*] 🌐 DEPLOYMENT → SELF_IP=172.20.0.10 → 1 subnets
+[*] ✓ LAB_MODE=1 — authorized lab environment, skipping isolation check
+[+] ✅ Persisted to /tmp/worm.py
+[*] 🎯 Drop server running at http://172.20.0.10:8080/worm.py
+[📋] Logged infection: 172.20.0.2 via SharedFS at 0.0s
+[+] SharedFS→172.20.0.2 Infected via /uploads
+[*] 🔍 Scanning 266 hosts (max 10 cycles)...
+
+[*] === CYCLE 1/10 ===
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting postgres → ports [5432][>] 🦠 Infecting 172.20.0.8 → ports [9000]
+
+[>] 🦠 Infecting 172.20.0.6 → ports [8888]
+[>] 🦠 Infecting 172.20.0.7 → ports [22]
+[>] 🦠 Infecting dns → ports [9000]
+[>] 🦠 Infecting db → ports [3306]
+[>] 🦠 Infecting jumpbox → ports [22]
+[>] 🦠 Infecting 172.20.0.4 → ports [6379]
+[>] 🦠 Infecting webserver → ports [80]
+[>] 🦠 Infecting localhost → ports [8080]
+[>] 🦠 Infecting 127.0.0.1 → ports [8080]
+[>] 🦠 Infecting 172.20.0.5 → ports [3306]
+[>] 🦠 Infecting 172.20.0.9 → ports [80]
+[>] 🦠 Infecting api → ports [8080]
+[>] 🦠 Infecting redis → ports [6379]
+[>] 🦠 Infecting victim → ports [8888][>] 🦠 Infecting 172.20.0.3 → ports [5432]
+
+[>] 🦠 Infecting 172.20.0.10 → ports [8080][+] 18 new infection attempts
+
+[+] HTTP→172.20.0.6:8888 payload delivered
+[📋] Logged infection: 172.20.0.6 via HTTP RCE at 7.17s
+[+] HTTP→victim:8888 payload delivered
+[📋] Logged infection: victim via HTTP RCE at 7.19s
+[+] HTTP→127.0.0.1:8080 payload delivered
+[📋] Logged infection: 127.0.0.1 via HTTP RCE at 7.2s
+[+] HTTP→api:8080 payload delivered
+[📋] Logged infection: api via HTTP RCE at 7.2s
+[+] HTTP→172.20.0.10:8080 payload delivered
+[📋] Logged infection: 172.20.0.10 via HTTP RCE at 7.2s
+[+] HTTP→localhost:8080 payload delivered
+[📋] Logged infection: localhost via HTTP RCE at 7.2s
+[+] HTTP→172.20.0.8:9000 payload delivered
+[📋] Logged infection: 172.20.0.8 via HTTP RCE at 7.21s
+[+] HTTP→webserver:80 payload delivered
+[📋] Logged infection: webserver via HTTP RCE at 7.22s
+[+] HTTP→dns:9000 payload delivered
+[📋] Logged infection: dns via HTTP RCE at 7.23s
+[+] HTTP→172.20.0.9:80 payload delivered
+[📋] Logged infection: 172.20.0.9 via HTTP RCE at 7.23s
+[+] Redis→172.20.0.4:6379 Infected (Cron Exploit)
+[📋] Logged infection: 172.20.0.4 via Redis at 7.56s
+[+] Redis→redis:6379 Infected (Cron Exploit)
+[📋] Logged infection: redis via Redis at 7.58s
+[+] SSH→172.20.0.7:ubuntu Infected
+[📋] Logged infection: 172.20.0.7 via SSH at 12.8s
+[2026-05-05 05:38:09] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 05:38:09] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 05:38:09]   [worm] → worm_traffic_exhaustive_4.csv
+[2026-05-05 05:38:09]   [worm] → worm_traffic_exhaustive_4.csv
+[*] Collecting WORM traffic data for 460s (interval=3s)...
+[*] Make sure the worm is RUNNING before starting collection!
+[*] Output: /home/greenballoons/499/DockerWormNetwork/ml/data/worm_traffic_exhaustive_4.csv
+[+] 10 samples written
+
+[*] === CYCLE 2/10 ===
+[+] 20 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting db → ports [3306]
+[>] 🦠 Infecting jumpbox → ports [22]
+[>] 🦠 Infecting 172.20.0.5 → ports [3306]
+[>] 🦠 Infecting 172.20.0.3 → ports [5432]
+[+] 5 new infection attempts
+[2026-05-05 05:38:20] Copying worm.py → shared_data/
+[2026-05-05 05:38:20] Launching worm inside api (strategy=exhaustive)...
+[+] 30 samples written
+
+[*] === CYCLE 3/10 ===
+[+] 40 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting postgres → ports [5432][>] 🦠 Infecting db → ports [3306]
+[>] 🦠 Infecting jumpbox → ports [22]
+
+[>] 🦠 Infecting 172.20.0.5 → ports [3306]
+[>] 🦠 Infecting 172.20.0.3 → ports [5432]
+[+] 5 new infection attempts
+[+] 50 samples written
+[2026-05-05 05:38:35] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 05:38:35]   [worm] → worm_traffic_exhaustive_5.csv
+[+] 60 samples written
+
+[*] === CYCLE 4/10 ===
+[+] 70 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting postgres → ports [5432][>] 🦠 Infecting db → ports [3306]
+[>] 🦠 Infecting jumpbox → ports [22]
+
+[>] 🦠 Infecting 172.20.0.5 → ports [3306]
+[>] 🦠 Infecting 172.20.0.3 → ports [5432]
+[+] 5 new infection attempts
+[+] 80 samples written
+[+] 90 samples written
+
+[*] === CYCLE 5/10 ===
+[+] 100 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting db → ports [3306]
+[>] 🦠 Infecting jumpbox → ports [22]
+[>] 🦠 Infecting 172.20.0.5 → ports [3306]
+[>] 🦠 Infecting 172.20.0.3 → ports [5432]
+[+] 5 new infection attempts
+[+] 110 samples written
+[+] SSH→jumpbox:ubuntu Infected
+[📋] Logged infection: jumpbox via SSH at 71.81s
+[+] 120 samples written
+
+[*] === CYCLE 6/10 ===
+[+] 130 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting db → ports [3306]
+[>] 🦠 Infecting 172.20.0.5 → ports [3306]
+[>] 🦠 Infecting 172.20.0.3 → ports [5432]
+[+] 4 new infection attempts
+[+] 140 samples written
+[+] 150 samples written
+
+[*] === CYCLE 7/10 ===
+[+] 160 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting db → ports [3306]
+[>] 🦠 Infecting 172.20.0.5 → ports [3306]
+[>] 🦠 Infecting 172.20.0.3 → ports [5432]
+[+] 4 new infection attempts
+[+] 170 samples written
+[+] 180 samples written
+
+[*] === CYCLE 8/10 ===
+[+] 190 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting postgres → ports [5432][>] 🦠 Infecting db → ports [3306]
+[>] 🦠 Infecting 172.20.0.5 → ports [3306]
+
+[>] 🦠 Infecting 172.20.0.3 → ports [5432]
+[+] 4 new infection attempts
+[+] 200 samples written
+[+] 210 samples written
+
+[*] === CYCLE 9/10 ===
+[+] 220 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting db → ports [3306]
+[>] 🦠 Infecting 172.20.0.5 → ports [3306]
+[>] 🦠 Infecting 172.20.0.3 → ports [5432][+] 4 new infection attempts
+
+[+] 230 samples written
+[+] 240 samples written
+
+[*] === CYCLE 10/10 ===
+[+] 250 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting db → ports [3306]
+[>] 🦠 Infecting 172.20.0.5 → ports [3306]
+[>] 🦠 Infecting 172.20.0.3 → ports [5432]
+[+] 4 new infection attempts
+[+] 260 samples written
+[+] 270 samples written
+
+======================================================================
+[💀] CREDENTIAL HARVEST REPORT
+======================================================================
+
+[-] No database credentials harvested.
+
+======================================================================
+[💀] END OF CREDENTIAL REPORT
+======================================================================
+
+[📋] Propagation log saved → /uploads/propagation_log.csv (15 events)
+
+[*] === WORM COMPLETE ===
+[*] Strategy: exhaustive
+[*] Cycles: 10
+[*] Total infected: 15
+[*] Infected hosts: ['172.20.0.8', '127.0.0.1', 'localhost', '172.20.0.6', 'victim', 'redis', '172.20.0.7', 'jumpbox', 'dns', 'webserver', 'api', '172.20.0.10', '172.20.0.4', '172.20.0.9', '172.20.0.2']
+[+] 280 samples written
+[+] 290 samples written
+[+] 300 samples written
+[+] 310 samples written
+[+] 320 samples written
+[+] 330 samples written
+[+] 340 samples written
+[+] 350 samples written
+[+] 360 samples written
+[+] 370 samples written
+[+] 380 samples written
+[+] 390 samples written
+[+] 400 samples written
+[+] 410 samples written
+[+] 420 samples written
+[+] 430 samples written
+[+] 440 samples written
+[+] 450 samples written
+[+] 460 samples written
+[+] 470 samples written
+[+] 480 samples written
+[+] 490 samples written
+[+] 500 samples written
+[+] 510 samples written
+[+] 520 samples written
+[+] 530 samples written
+[+] 540 samples written
+[+] 550 samples written
+[+] 560 samples written
+[+] 570 samples written
+[+] 580 samples written
+[+] 590 samples written
+[+] 600 samples written
+[+] 610 samples written
+[+] 620 samples written
+[+] 630 samples written
+[+] 640 samples written
+[+] 650 samples written
+[+] 660 samples written
+[+] 670 samples written
+[+] 680 samples written
+[+] 690 samples written
+[+] 700 samples written
+[+] 710 samples written
+[+] 720 samples written
+[+] 730 samples written
+[+] 740 samples written
+[+] 750 samples written
+[+] 760 samples written
+[+] 770 samples written
+[+] 780 samples written
+[+] 790 samples written
+[+] 800 samples written
+[+] 810 samples written
+[+] 820 samples written
+[+] 830 samples written
+[+] 840 samples written
+[+] 850 samples written
+[+] 860 samples written
+[+] 870 samples written
+[+] 880 samples written
+[+] 890 samples written
+[+] Worm traffic collection complete: 890 samples → /home/greenballoons/499/DockerWormNetwork/ml/data/worm_traffic_exhaustive_4.csv
+[2026-05-05 05:45:53] Resetting lab...
+[2026-05-05 05:45:53] Resetting lab...
+[2026-05-05 05:46:16] Reset exit=0
+[2026-05-05 05:46:16] Reset exit=0
+[2026-05-05 05:46:16] Waiting for api container...
+[2026-05-05 05:46:16] Waiting for api container...
+[2026-05-05 05:46:19] Resetting lab...
+[2026-05-05 05:46:32] api container ready.
+[2026-05-05 05:46:32] api container ready.
+[2026-05-05 05:46:32] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 05:46:32] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 05:46:32] Round 5  strategy=random  |  2/12 done  |  0.54h elapsed
+[2026-05-05 05:46:32] Round 5  strategy=random  |  2/12 done  |  0.54h elapsed
+[2026-05-05 05:46:32] ─────────────────────────────────────────────────────────────────
+[2026-05-05 05:46:32] ─────────────────────────────────────────────────────────────────
+[2026-05-05 05:46:32]   [baseline] → baseline_traffic_random_5.csv
+[2026-05-05 05:46:32]   [baseline] → baseline_traffic_random_5.csv
+[*] Collecting baseline data for 460s (interval=3s)...
+[*] Ensure worm is NOT running. Only normal services should be active.
+[*] Output: /home/greenballoons/499/DockerWormNetwork/ml/data/baseline_traffic_random_5.csv
+[+] 3 samples written
+[+] 6 samples written
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/greenballoons/499/DockerWormNetwork/ml/scripts/collect_baseline.py", line 140, in collect_baseline
+    with ThreadPoolExecutor(max_workers=len(containers)) as pool:
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 144, in __init__
+    raise ValueError("max_workers must be greater than 0")
+ValueError: max_workers must be greater than 0
+[2026-05-05 05:46:42] Copying worm.py → shared_data/
+[2026-05-05 05:46:42] Copying worm.py → shared_data/
+[2026-05-05 05:46:42] Launching worm inside api (strategy=random)...
+[2026-05-05 05:46:42] Launching worm inside api (strategy=random)...
+Error response from daemon: container 72e933d6817a585808e7102c3d286108e51c3467b00de7a5c3165ef16a15dc89 is not running
+[2026-05-05 05:46:42] Reset exit=0
+[2026-05-05 05:46:42] Waiting for api container...
+[2026-05-05 05:46:57] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 05:46:57] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 05:46:57]   [worm] → worm_traffic_random_5.csv
+[2026-05-05 05:46:57]   [worm] → worm_traffic_random_5.csv
+[2026-05-05 05:46:58] api container ready.
+[2026-05-05 05:46:58] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 05:46:58] Round 6  strategy=random  |  2/12 done  |  0.54h elapsed
+[2026-05-05 05:46:58] ─────────────────────────────────────────────────────────────────
+[2026-05-05 05:46:58]   [baseline] → baseline_traffic_random_6.csv
+[*] Collecting WORM traffic data for 460s (interval=3s)...
+[*] Make sure the worm is RUNNING before starting collection!
+[*] Output: /home/greenballoons/499/DockerWormNetwork/ml/data/worm_traffic_random_5.csv
+[+] 10 samples written
+[+] 20 samples written
+[+] 30 samples written
+[+] 40 samples written
+[+] 50 samples written
+[+] 60 samples written
+[+] 70 samples written
+[+] 80 samples written
+[+] 90 samples written
+[+] 100 samples written
+[+] 110 samples written
+[+] 120 samples written
+[+] 130 samples written
+[+] 140 samples written
+[+] 150 samples written
+[+] 160 samples written
+[+] 170 samples written
+[+] 180 samples written
+[+] 190 samples written
+[+] 200 samples written
+[+] 210 samples written
+[+] 220 samples written
+[+] 230 samples written
+[+] 240 samples written
+[+] 250 samples written
+[+] 260 samples written
+[+] 270 samples written
+[+] 280 samples written
+[+] 290 samples written
+[+] 300 samples written
+[+] 310 samples written
+[+] 320 samples written
+[+] 330 samples written
+[+] 340 samples written
+[+] 350 samples written
+[+] 360 samples written
+[+] 370 samples written
+[+] 380 samples written
+[+] 390 samples written
+[+] 400 samples written
+[+] 410 samples written
+[+] 420 samples written
+[+] 430 samples written
+[+] 440 samples written
+[+] 450 samples written
+[+] 460 samples written
+[+] 470 samples written
+[+] 480 samples written
+[+] 490 samples written
+[+] 500 samples written
+[+] 510 samples written
+[+] 520 samples written
+[+] 530 samples written
+[+] 540 samples written
+[+] 550 samples written
+[+] 560 samples written
+[+] 570 samples written
+[+] 580 samples written
+[+] 590 samples written
+[+] 600 samples written
+[+] 610 samples written
+[+] 620 samples written
+[+] 630 samples written
+[+] 640 samples written
+[+] 650 samples written
+[+] 660 samples written
+[+] 670 samples written
+[+] 680 samples written
+[+] 690 samples written
+[+] 700 samples written
+[+] 710 samples written
+[+] 720 samples written
+[+] 730 samples written
+[+] 740 samples written
+[+] 750 samples written
+[+] 760 samples written
+[+] 770 samples written
+[+] 780 samples written
+[+] 790 samples written
+[+] 800 samples written
+[+] 810 samples written
+[+] 820 samples written
+[+] 830 samples written
+[+] 840 samples written
+[+] 850 samples written
+[+] 860 samples written
+[+] 870 samples written
+[+] 880 samples written
+[+] 890 samples written
+[+] Worm traffic collection complete: 890 samples → /home/greenballoons/499/DockerWormNetwork/ml/data/worm_traffic_random_5.csv
+[2026-05-05 05:54:41] Copying worm.py → shared_data/
+[2026-05-05 05:54:41] Launching worm inside api (strategy=random)...
+[2026-05-05 05:54:41] Resetting lab...
+[2026-05-05 05:54:41] Resetting lab...
+[2026-05-05 05:54:56] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 05:54:56]   [worm] → worm_traffic_random_6.csv
+[2026-05-05 05:55:06] Reset exit=0
+[2026-05-05 05:55:06] Reset exit=0
+[2026-05-05 05:55:06] Waiting for api container...
+[2026-05-05 05:55:06] Waiting for api container...
+[2026-05-05 05:55:21] api container ready.
+[2026-05-05 05:55:21] api container ready.
+[2026-05-05 05:55:21] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 05:55:21] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 05:55:21] Round 5  strategy=exhaustive  |  3/12 done  |  0.69h elapsed
+[2026-05-05 05:55:21] Round 5  strategy=exhaustive  |  3/12 done  |  0.69h elapsed
+[2026-05-05 05:55:21] ─────────────────────────────────────────────────────────────────
+[2026-05-05 05:55:21] ─────────────────────────────────────────────────────────────────
+[2026-05-05 05:55:21]   [baseline] → baseline_traffic_exhaustive_5.csv
+[2026-05-05 05:55:21]   [baseline] → baseline_traffic_exhaustive_5.csv
+[*] Collecting baseline data for 460s (interval=3s)...
+[*] Ensure worm is NOT running. Only normal services should be active.
+[*] Output: /home/greenballoons/499/DockerWormNetwork/ml/data/baseline_traffic_exhaustive_5.csv
+[+] 10 samples written
+[+] 20 samples written
+[+] 30 samples written
+[+] 40 samples written
+[+] 50 samples written
+[+] 60 samples written
+[+] 70 samples written
+[+] 80 samples written
+[+] 90 samples written
+[+] 100 samples written
+[+] 110 samples written
+[+] 120 samples written
+[+] 130 samples written
+[+] 140 samples written
+[+] 150 samples written
+[+] 160 samples written
+[+] 170 samples written
+[+] 180 samples written
+[+] 190 samples written
+[+] 200 samples written
+[+] 210 samples written
+[+] 220 samples written
+[+] 230 samples written
+[+] 240 samples written
+[+] 250 samples written
+[+] 260 samples written
+[+] 270 samples written
+[+] 280 samples written
+[+] 290 samples written
+[+] 300 samples written
+[+] 310 samples written
+[+] 320 samples written
+[+] 330 samples written
+[+] 340 samples written
+[+] 350 samples written
+[+] 360 samples written
+[+] 370 samples written
+[+] 380 samples written
+[+] 390 samples written
+[+] 400 samples written
+[+] 410 samples written
+[+] 420 samples written
+[+] 430 samples written
+[+] 440 samples written
+[+] 450 samples written
+[+] 460 samples written
+[+] 470 samples written
+[+] 480 samples written
+[+] 490 samples written
+[+] 500 samples written
+[+] 510 samples written
+[+] 520 samples written
+[+] 530 samples written
+[+] 540 samples written
+[+] 550 samples written
+[+] 560 samples written
+[+] 570 samples written
+[+] 580 samples written
+[+] 590 samples written
+[+] 600 samples written
+[+] 610 samples written
+[+] 620 samples written
+[+] 630 samples written
+[+] 640 samples written
+[+] 650 samples written
+[+] 660 samples written
+[+] 670 samples written
+[+] 680 samples written
+[+] 690 samples written
+[+] 700 samples written
+[+] 710 samples written
+[+] 720 samples written
+[+] 730 samples written
+[+] 740 samples written
+[+] 750 samples written
+[+] 760 samples written
+[+] 770 samples written
+[+] 780 samples written
+[+] 790 samples written
+[+] 800 samples written
+[+] 810 samples written
+[+] 820 samples written
+[+] 830 samples written
+[+] 840 samples written
+[2026-05-05 06:02:39] Resetting lab...
+[+] 850 samples written
+[+] 860 samples written
+[+] 870 samples written
+[+] 873 samples written
+[+] 876 samples written
+[2026-05-05 06:03:02] Reset exit=0
+[2026-05-05 06:03:02] Waiting for api container...
+[+] Baseline collection complete: 876 samples → /home/greenballoons/499/DockerWormNetwork/ml/data/baseline_traffic_exhaustive_5.csv
+[2026-05-05 06:03:04] Copying worm.py → shared_data/
+[2026-05-05 06:03:04] Copying worm.py → shared_data/
+[2026-05-05 06:03:04] Launching worm inside api (strategy=exhaustive)...
+[2026-05-05 06:03:04] Launching worm inside api (strategy=exhaustive)...
+[*] 🪱 DYNAMIC WORM → bcb6a84c8576 → SELF_IP=172.20.0.10 → strategy=exhaustive
+[*] 🌐 DEPLOYMENT → SELF_IP=172.20.0.10 → 1 subnets
+[*] ✓ LAB_MODE=1 — authorized lab environment, skipping isolation check
+[+] ✅ Persisted to /tmp/worm.py
+[*] 🎯 Drop server running at http://172.20.0.10:8080/worm.py
+[📋] Logged infection: 172.20.0.3 via SharedFS at 0.0s
+[+] SharedFS→172.20.0.3 Infected via /uploads
+[*] 🔍 Scanning 266 hosts (max 10 cycles)...
+
+[*] === CYCLE 1/10 ===
+[+] 🎯 14 hosts with open ports
+[>] 🦠 Infecting webserver → ports [80]
+[>] 🦠 Infecting redis → ports [6379]
+[>] 🦠 Infecting 127.0.0.1 → ports [8080]
+[>] 🦠 Infecting api → ports [8080]
+[>] 🦠 Infecting 172.20.0.7 → ports [9000]
+[>] 🦠 Infecting localhost → ports [8080]
+[>] 🦠 Infecting 172.20.0.2 → ports [6379]
+[>] 🦠 Infecting 172.20.0.10 → ports [8080]
+[>] 🦠 Infecting victim → ports [8888]
+[>] 🦠 Infecting dns → ports [9000]
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting 172.20.0.5 → ports [80]
+[>] 🦠 Infecting 172.20.0.9 → ports [8888]
+[>] 🦠 Infecting 172.20.0.4 → ports [5432]
+[+] 14 new infection attempts
+[+] HTTP→webserver:80 payload delivered
+[+] HTTP→172.20.0.9:8888 payload delivered
+[📋] Logged infection: 172.20.0.9 via HTTP RCE at 7.39s
+[📋] Logged infection: webserver via HTTP RCE at 7.39s
+[+] HTTP→victim:8888 payload delivered
+[📋] Logged infection: victim via HTTP RCE at 7.39s
+[+] HTTP→172.20.0.5:80 payload delivered
+[📋] Logged infection: 172.20.0.5 via HTTP RCE at 7.39s
+[+] HTTP→dns:9000 payload delivered
+[📋] Logged infection: dns via HTTP RCE at 7.39s
+[+] HTTP→172.20.0.7:9000 payload delivered
+[📋] Logged infection: 172.20.0.7 via HTTP RCE at 7.4s
+[+] HTTP→127.0.0.1:8080 payload delivered
+[📋] Logged infection: 127.0.0.1 via HTTP RCE at 7.41s
+[+] HTTP→172.20.0.10:8080 payload delivered
+[📋] Logged infection: 172.20.0.10 via HTTP RCE at 7.41s
+[+] HTTP→api:8080 payload delivered
+[📋] Logged infection: api via HTTP RCE at 7.42s
+[+] HTTP→localhost:8080 payload delivered
+[📋] Logged infection: localhost via HTTP RCE at 7.42s
+[+] Redis→172.20.0.2:6379 Infected (Cron Exploit)
+[📋] Logged infection: 172.20.0.2 via Redis at 7.69s
+[+] Redis→redis:6379 Infected (Cron Exploit)
+[📋] Logged infection: redis via Redis at 7.69s
+[2026-05-05 06:03:17] api container ready.
+[2026-05-05 06:03:17] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 06:03:17] Round 6  strategy=exhaustive  |  3/12 done  |  0.82h elapsed
+[2026-05-05 06:03:17] ─────────────────────────────────────────────────────────────────
+[2026-05-05 06:03:17]   [baseline] → baseline_traffic_exhaustive_6.csv
+[2026-05-05 06:03:19] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 06:03:19] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 06:03:19]   [worm] → worm_traffic_exhaustive_5.csv
+[2026-05-05 06:03:19]   [worm] → worm_traffic_exhaustive_5.csv
+[*] Collecting WORM traffic data for 460s (interval=3s)...
+[*] Make sure the worm is RUNNING before starting collection!
+[*] Output: /home/greenballoons/499/DockerWormNetwork/ml/data/worm_traffic_exhaustive_5.csv
+[+] 10 samples written
+
+[*] === CYCLE 2/10 ===
+[+] 20 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting 172.20.0.8 → ports [3306]
+[>] 🦠 Infecting 172.20.0.6 → ports [22]
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting 172.20.0.4 → ports [5432]
+[>] 🦠 Infecting db → ports [3306]
+[>] 🦠 Infecting jumpbox → ports [22]
+[+] 6 new infection attempts
+[+] 30 samples written
+[+] SSH→172.20.0.6:ubuntu Infected
+[📋] Logged infection: 172.20.0.6 via SSH at 28.02s
+[+] 40 samples written
+
+[*] === CYCLE 3/10 ===
+[+] 50 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting 172.20.0.8 → ports [3306][>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting 172.20.0.4 → ports [5432]
+
+[>] 🦠 Infecting db → ports [3306]
+[>] 🦠 Infecting jumpbox → ports [22][+] 5 new infection attempts
+
+[+] 60 samples written
+[+] 70 samples written
+
+[*] === CYCLE 4/10 ===
+[+] 80 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting 172.20.0.8 → ports [3306]
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting 172.20.0.4 → ports [5432]
+[>] 🦠 Infecting db → ports [3306]
+[>] 🦠 Infecting jumpbox → ports [22]
+[+] 5 new infection attempts
+[+] 90 samples written
+[+] SSH→jumpbox:ubuntu Infected
+[📋] Logged infection: jumpbox via SSH at 59.54s
+[+] 100 samples written
+
+[*] === CYCLE 5/10 ===
+[+] 110 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting 172.20.0.8 → ports [3306]
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting 172.20.0.4 → ports [5432]
+[>] 🦠 Infecting db → ports [3306]
+[+] 4 new infection attempts
+[+] 120 samples written
+[+] 130 samples written
+
+[*] === CYCLE 6/10 ===
+[+] 140 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting 172.20.0.8 → ports [3306]
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting 172.20.0.4 → ports [5432]
+[>] 🦠 Infecting db → ports [3306]
+[+] 4 new infection attempts
+[+] 150 samples written
+[+] 160 samples written
+
+[*] === CYCLE 7/10 ===
+[+] 170 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting 172.20.0.8 → ports [3306]
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting 172.20.0.4 → ports [5432]
+[>] 🦠 Infecting db → ports [3306]
+[+] 4 new infection attempts
+[+] 180 samples written
+
+[*] === CYCLE 8/10 ===
+[+] 190 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting 172.20.0.8 → ports [3306][>] 🦠 Infecting postgres → ports [5432]
+
+[>] 🦠 Infecting 172.20.0.4 → ports [5432]
+[>] 🦠 Infecting db → ports [3306][+] 4 new infection attempts
+
+[+] 200 samples written
+[+] 210 samples written
+
+[*] === CYCLE 9/10 ===
+[+] 220 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting 172.20.0.8 → ports [3306]
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting 172.20.0.4 → ports [5432]
+[>] 🦠 Infecting db → ports [3306]
+[+] 4 new infection attempts
+[+] 230 samples written
+[+] 240 samples written
+
+[*] === CYCLE 10/10 ===
+[+] 250 samples written
+[+] 🎯 18 hosts with open ports
+[>] 🦠 Infecting 172.20.0.8 → ports [3306]
+[>] 🦠 Infecting postgres → ports [5432]
+[>] 🦠 Infecting 172.20.0.4 → ports [5432]
+[>] 🦠 Infecting db → ports [3306]
+[+] 4 new infection attempts
+[+] 260 samples written
+[+] 270 samples written
+
+======================================================================
+[💀] CREDENTIAL HARVEST REPORT
+======================================================================
+
+[-] No database credentials harvested.
+
+======================================================================
+[💀] END OF CREDENTIAL REPORT
+======================================================================
+
+[📋] Propagation log saved → /uploads/propagation_log.csv (15 events)
+
+[*] === WORM COMPLETE ===
+[*] Strategy: exhaustive
+[*] Cycles: 10
+[*] Total infected: 15
+[*] Infected hosts: ['172.20.0.3', '172.20.0.2', '172.20.0.7', 'jumpbox', '127.0.0.1', 'victim', '172.20.0.5', '172.20.0.10', '172.20.0.9', 'api', 'webserver', 'localhost', 'redis', 'dns', '172.20.0.6']
+[+] 280 samples written
+[+] 290 samples written
+[+] 300 samples written
+[+] 310 samples written
+[+] 320 samples written
+[+] 330 samples written
+[+] 340 samples written
+[+] 350 samples written
+[+] 360 samples written
+[+] 370 samples written
+[+] 380 samples written
+[+] 390 samples written
+[+] 400 samples written
+[+] 410 samples written
+[+] 420 samples written
+[+] 430 samples written
+[+] 440 samples written
+[+] 450 samples written
+[+] 460 samples written
+[+] 470 samples written
+[+] 480 samples written
+[+] 490 samples written
+[+] 500 samples written
+[+] 510 samples written
+[+] 520 samples written
+[+] 530 samples written
+[+] 540 samples written
+[+] 550 samples written
+[+] 560 samples written
+[+] 570 samples written
+[+] 580 samples written
+[+] 590 samples written
+[+] 600 samples written
+[+] 610 samples written
+[+] 620 samples written
+[+] 630 samples written
+[+] 640 samples written
+[+] 650 samples written
+[+] 660 samples written
+[+] 670 samples written
+[+] 680 samples written
+[+] 690 samples written
+[+] 700 samples written
+[+] 710 samples written
+[+] 720 samples written
+[+] 730 samples written
+[+] 740 samples written
+[+] 750 samples written
+[+] 760 samples written
+[+] 770 samples written
+[2026-05-05 06:10:58] Copying worm.py → shared_data/
+[2026-05-05 06:10:58] Launching worm inside api (strategy=exhaustive)...
+[+] 780 samples written
+[+] Worm traffic collection complete: 780 samples → /home/greenballoons/499/DockerWormNetwork/ml/data/worm_traffic_exhaustive_5.csv
+[2026-05-05 06:11:04] Resetting lab...
+[2026-05-05 06:11:04] Resetting lab...
+[2026-05-05 06:11:13] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 06:11:13]   [worm] → worm_traffic_exhaustive_6.csv
+[2026-05-05 06:11:28] Reset exit=0
+[2026-05-05 06:11:28] Reset exit=0
+[2026-05-05 06:11:28] Waiting for api container...
+[2026-05-05 06:11:28] Waiting for api container...
+[2026-05-05 06:11:43] api container ready.
+[2026-05-05 06:11:43] api container ready.
+[2026-05-05 06:11:43] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 06:11:43] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 06:11:43] Round 6  strategy=random  |  4/12 done  |  0.96h elapsed
+[2026-05-05 06:11:43] Round 6  strategy=random  |  4/12 done  |  0.96h elapsed
+[2026-05-05 06:11:43] ─────────────────────────────────────────────────────────────────
+[2026-05-05 06:11:43] ─────────────────────────────────────────────────────────────────
+[2026-05-05 06:11:43]   [baseline] → baseline_traffic_random_6.csv
+[2026-05-05 06:11:43]   [baseline] → baseline_traffic_random_6.csv
+[*] Collecting baseline data for 460s (interval=3s)...
+[*] Ensure worm is NOT running. Only normal services should be active.
+[*] Output: /home/greenballoons/499/DockerWormNetwork/ml/data/baseline_traffic_random_6.csv
+[+] 10 samples written
+[+] 20 samples written
+[+] 30 samples written
+[+] 40 samples written
+[+] 50 samples written
+[+] 60 samples written
+[+] 70 samples written
+[+] 80 samples written
+[+] 90 samples written
+[+] 100 samples written
+[+] 110 samples written
+[+] 120 samples written
+[+] 130 samples written
+[+] 140 samples written
+[+] 150 samples written
+[+] 160 samples written
+[+] 170 samples written
+[+] 180 samples written
+[+] 190 samples written
+[+] 200 samples written
+[+] 210 samples written
+[+] 220 samples written
+[+] 230 samples written
+[+] 240 samples written
+[+] 250 samples written
+[+] 260 samples written
+[+] 270 samples written
+[+] 280 samples written
+[+] 290 samples written
+[+] 300 samples written
+[+] 310 samples written
+[+] 320 samples written
+[+] 330 samples written
+[+] 340 samples written
+[+] 350 samples written
+[+] 360 samples written
+[+] 370 samples written
+[+] 380 samples written
+[+] 390 samples written
+[+] 400 samples written
+[+] 410 samples written
+[+] 420 samples written
+[+] 430 samples written
+[+] 440 samples written
+[+] 450 samples written
+[+] 460 samples written
+[+] 470 samples written
+[+] 480 samples written
+[+] 490 samples written
+[+] 500 samples written
+[+] 510 samples written
+[+] 520 samples written
+[+] 530 samples written
+[+] 540 samples written
+[+] 550 samples written
+[+] 560 samples written
+[+] 570 samples written
+[+] 580 samples written
+[+] 590 samples written
+[+] 600 samples written
+[+] 610 samples written
+[+] 620 samples written
+[+] 630 samples written
+[+] 640 samples written
+[+] 650 samples written
+[+] 660 samples written
+[+] 670 samples written
+[+] 680 samples written
+[+] 690 samples written
+[+] 700 samples written
+[+] 710 samples written
+[+] 720 samples written
+[+] 730 samples written
+[+] 740 samples written
+[+] 750 samples written
+[+] 760 samples written
+[+] 770 samples written
+[+] 780 samples written
+[+] 790 samples written
+[+] 800 samples written
+[+] 810 samples written
+[+] 820 samples written
+[+] 830 samples written
+[2026-05-05 06:18:57] Resetting lab...
+[+] 840 samples written
+[+] 850 samples written
+[+] 860 samples written
+[+] 863 samples written
+[+] 866 samples written
+[2026-05-05 06:19:21] Reset exit=0
+[2026-05-05 06:19:21] Waiting for api container...
+[+] 876 samples written
+[+] Baseline collection complete: 876 samples → /home/greenballoons/499/DockerWormNetwork/ml/data/baseline_traffic_random_6.csv
+[2026-05-05 06:19:28] Copying worm.py → shared_data/
+[2026-05-05 06:19:28] Copying worm.py → shared_data/
+[2026-05-05 06:19:28] Launching worm inside api (strategy=random)...
+[2026-05-05 06:19:28] Launching worm inside api (strategy=random)...
+[*] 🪱 DYNAMIC WORM → e73f58e65bdd → SELF_IP=172.20.0.10 → strategy=random
+[*] 🌐 DEPLOYMENT → SELF_IP=172.20.0.10 → 1 subnets
+[*] ✓ LAB_MODE=1 — authorized lab environment, skipping isolation check
+[+] ✅ Persisted to /tmp/worm.py
+[*] 🎯 Drop server running at http://172.20.0.10:8080/worm.py
+[📋] Logged infection: 172.20.0.9 via SharedFS at 0.0s
+[+] SharedFS→172.20.0.9 Infected via /uploads
+[*] 🔍 Scanning 266 hosts (max 10 cycles)...
+
+[*] === CYCLE 1/10 ===
+[+] 🎯 1 hosts with open ports
+[>] 🦠 Infecting victim → ports [8888]
+[+] 1 new infection attempts
+[+] HTTP→victim:8888 payload delivered
+[📋] Logged infection: victim via HTTP RCE at 3.09s
+[2026-05-05 06:19:36] api container ready.
+[2026-05-05 06:19:36] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 06:19:36] Round 7  strategy=random  |  4/12 done  |  1.09h elapsed
+[2026-05-05 06:19:36] ─────────────────────────────────────────────────────────────────
+[2026-05-05 06:19:36]   [baseline] → baseline_traffic_random_7.csv
+
+[*] === CYCLE 2/10 ===
+[+] 🎯 3 hosts with open ports
+[>] 🦠 Infecting 172.20.0.4 → ports [9000]
+[>] 🦠 Infecting api → ports [8080]
+[>] 🦠 Infecting 172.20.0.3 → ports [8888]
+[+] 3 new infection attempts
+[+] HTTP→172.20.0.3:8888 payload delivered
+[📋] Logged infection: 172.20.0.3 via HTTP RCE at 14.18s
+[+] HTTP→api:8080 payload delivered
+[📋] Logged infection: api via HTTP RCE at 14.18s
+[+] HTTP→172.20.0.4:9000 payload delivered
+[📋] Logged infection: 172.20.0.4 via HTTP RCE at 14.19s
+[2026-05-05 06:19:43] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 06:19:43] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 06:19:43]   [worm] → worm_traffic_random_6.csv
+[2026-05-05 06:19:43]   [worm] → worm_traffic_random_6.csv
+[*] Collecting WORM traffic data for 460s (interval=3s)...
+[*] Make sure the worm is RUNNING before starting collection!
+[*] Output: /home/greenballoons/499/DockerWormNetwork/ml/data/worm_traffic_random_6.csv
+[+] 10 samples written
+[+] 20 samples written
+
+[*] === CYCLE 3/10 ===
+[+] 🎯 1 hosts with open ports
+[>] 🦠 Infecting redis → ports [6379]
+[+] 1 new infection attempts
+[+] Redis→redis:6379 Infected (Cron Exploit)
+[📋] Logged infection: redis via Redis at 25.63s
+[+] 30 samples written
+[+] 40 samples written
+
+[*] === CYCLE 4/10 ===
+[+] 50 samples written
+[+] 🎯 3 hosts with open ports
+[>] 🦠 Infecting 172.20.0.10 → ports [8080]
+[>] 🦠 Infecting 127.0.0.1 → ports [8080]
+[+] 2 new infection attempts
+[+] HTTP→172.20.0.10:8080 payload delivered
+[📋] Logged infection: 172.20.0.10 via HTTP RCE at 36.39s
+[+] HTTP→127.0.0.1:8080 payload delivered
+[📋] Logged infection: 127.0.0.1 via HTTP RCE at 36.39s
+[+] 60 samples written
+
+[*] === CYCLE 5/10 ===
+[+] 70 samples written
+[+] 🎯 4 hosts with open ports
+[>] 🦠 Infecting webserver → ports [80]
+[>] 🦠 Infecting 172.20.0.2 → ports [80]
+[>] 🦠 Infecting 172.20.0.5 → ports [3306]
+[+] 3 new infection attempts
+[+] HTTP→172.20.0.2:80 payload delivered
+[📋] Logged infection: 172.20.0.2 via HTTP RCE at 47.48s
+[+] HTTP→webserver:80 payload delivered
+[📋] Logged infection: webserver via HTTP RCE at 47.49s
+[+] 80 samples written
+[+] 90 samples written
+
+[*] === CYCLE 6/10 ===
+[+] 🎯 0 hosts with open ports
+[!] No new infections (stagnant: 1)
+[+] 100 samples written
+[+] 110 samples written
+
+[*] === CYCLE 7/10 ===
+[+] 🎯 1 hosts with open ports
+[!] No new infections (stagnant: 2)
+[+] 120 samples written
+[+] 130 samples written
+
+[*] === CYCLE 8/10 ===
+[+] 🎯 2 hosts with open ports
+[>] 🦠 Infecting 172.20.0.8 → ports [22]
+[+] 1 new infection attempts
+[+] 140 samples written
+[+] SSH→172.20.0.8:ubuntu Infected
+[📋] Logged infection: 172.20.0.8 via SSH at 87.53s
+[+] 150 samples written
+
+[*] === CYCLE 9/10 ===
+[+] 🎯 0 hosts with open ports
+[!] No new infections (stagnant: 1)
+[+] 160 samples written
+[+] 170 samples written
+
+[*] === CYCLE 10/10 ===
+[+] 🎯 1 hosts with open ports
+[>] 🦠 Infecting postgres → ports [5432][+] 1 new infection attempts
+
+[+] 180 samples written
+[+] 190 samples written
+
+======================================================================
+[💀] CREDENTIAL HARVEST REPORT
+======================================================================
+
+[-] No database credentials harvested.
+
+======================================================================
+[💀] END OF CREDENTIAL REPORT
+======================================================================
+
+[📋] Propagation log saved → /uploads/propagation_log.csv (11 events)
+
+[*] === WORM COMPLETE ===
+[*] Strategy: random
+[*] Cycles: 10
+[*] Total infected: 11
+[*] Infected hosts: ['172.20.0.4', 'redis', '172.20.0.10', '172.20.0.9', '172.20.0.3', 'victim', 'api', 'webserver', '172.20.0.2', '127.0.0.1', '172.20.0.8']
+[+] 200 samples written
+[+] 210 samples written
+[+] 220 samples written
+[+] 230 samples written
+[+] 240 samples written
+[+] 250 samples written
+[+] 260 samples written
+[+] 270 samples written
+[+] 280 samples written
+[+] 290 samples written
+[+] 300 samples written
+[+] 310 samples written
+[+] 320 samples written
+[+] 330 samples written
+[+] 340 samples written
+[+] 350 samples written
+[+] 360 samples written
+[+] 370 samples written
+[+] 380 samples written
+[+] 390 samples written
+[+] 400 samples written
+[+] 410 samples written
+[+] 420 samples written
+[+] 430 samples written
+[+] 440 samples written
+[+] 450 samples written
+[+] 460 samples written
+[+] 470 samples written
+[+] 480 samples written
+[+] 490 samples written
+[+] 500 samples written
+[+] 510 samples written
+[+] 520 samples written
+[+] 530 samples written
+[+] 540 samples written
+[+] 550 samples written
+[+] 560 samples written
+[+] 570 samples written
+[+] 580 samples written
+[+] 590 samples written
+[+] 600 samples written
+[+] 610 samples written
+[+] 620 samples written
+[+] 630 samples written
+[+] 640 samples written
+[+] 650 samples written
+[+] 660 samples written
+[+] 670 samples written
+[+] 680 samples written
+[+] 690 samples written
+[+] 700 samples written
+[+] 710 samples written
+[+] 720 samples written
+[+] 730 samples written
+[+] 740 samples written
+[+] 750 samples written
+[+] 760 samples written
+[+] 770 samples written
+[+] 780 samples written
+[+] 790 samples written
+[+] 800 samples written
+[+] 810 samples written
+[+] 820 samples written
+[+] 830 samples written
+[+] 840 samples written
+[+] 850 samples written
+[+] 860 samples written
+[+] 870 samples written
+[+] 880 samples written
+[2026-05-05 06:27:18] Copying worm.py → shared_data/
+[2026-05-05 06:27:18] Launching worm inside api (strategy=random)...
+[+] 890 samples written
+[+] Worm traffic collection complete: 890 samples → /home/greenballoons/499/DockerWormNetwork/ml/data/worm_traffic_random_6.csv
+[2026-05-05 06:27:24] Resetting lab...
+[2026-05-05 06:27:24] Resetting lab...
+[2026-05-05 06:27:33] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 06:27:33]   [worm] → worm_traffic_random_7.csv
+[2026-05-05 06:27:48] Reset exit=0
+[2026-05-05 06:27:48] Reset exit=0
+[2026-05-05 06:27:48] Waiting for api container...
+[2026-05-05 06:27:48] Waiting for api container...
+[2026-05-05 06:28:03] api container ready.
+[2026-05-05 06:28:03] api container ready.
+[2026-05-05 06:28:03] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 06:28:03] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 06:28:03] Round 6  strategy=exhaustive  |  5/12 done  |  1.24h elapsed
+[2026-05-05 06:28:03] Round 6  strategy=exhaustive  |  5/12 done  |  1.24h elapsed
+[2026-05-05 06:28:03] ─────────────────────────────────────────────────────────────────
+[2026-05-05 06:28:03] ─────────────────────────────────────────────────────────────────
+[2026-05-05 06:28:03]   [baseline] → baseline_traffic_exhaustive_6.csv
+[2026-05-05 06:28:03]   [baseline] → baseline_traffic_exhaustive_6.csv
+[*] Collecting baseline data for 460s (interval=3s)...
+[*] Ensure worm is NOT running. Only normal services should be active.
+[*] Output: /home/greenballoons/499/DockerWormNetwork/ml/data/baseline_traffic_exhaustive_6.csv
+[+] 10 samples written
+[+] 20 samples written
+[+] 30 samples written
+[+] 40 samples written
+[+] 50 samples written
+[+] 60 samples written
+[+] 70 samples written
+[+] 80 samples written
+[+] 90 samples written
+[+] 100 samples written
+[+] 110 samples written
+[+] 120 samples written
+[+] 130 samples written
+[+] 140 samples written
+[+] 150 samples written
+[+] 160 samples written
+[+] 170 samples written
+[+] 180 samples written
+[+] 190 samples written
+[+] 200 samples written
+[+] 210 samples written
+[+] 220 samples written
+[+] Baseline collection complete: 220 samples → /home/greenballoons/499/DockerWormNetwork/ml/data/baseline_traffic_exhaustive_6.csv
+[2026-05-05 10:43:57] Copying worm.py → shared_data/
+[2026-05-05 10:43:57] Copying worm.py → shared_data/
+[2026-05-05 10:43:58] Launching worm inside api (strategy=exhaustive)...
+[2026-05-05 10:43:58] Launching worm inside api (strategy=exhaustive)...
+[*] 🪱 DYNAMIC WORM → 8f0c9548106d → SELF_IP=172.20.0.10 → strategy=exhaustive
+[*] 🌐 DEPLOYMENT → SELF_IP=172.20.0.10 → 1 subnets
+[*] ✓ LAB_MODE=1 — authorized lab environment, skipping isolation check
+[+] ✅ Persisted to /tmp/worm.py
+[*] 🎯 Drop server running at http://172.20.0.10:8080/worm.py
+[📋] Logged infection: 172.20.0.7 via SharedFS at 0.05s
+[+] SharedFS→172.20.0.7 Infected via /uploads
+[*] 🔍 Scanning 266 hosts (max 10 cycles)...
+
+[*] === CYCLE 1/10 ===
+[2026-05-05 10:44:07] Resetting lab...
+[2026-05-05 10:44:13] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 10:44:13] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 10:44:13]   [worm] → worm_traffic_exhaustive_6.csv
+[2026-05-05 10:44:13]   [worm] → worm_traffic_exhaustive_6.csv
+[*] Collecting WORM traffic data for 460s (interval=3s)...
+[*] Make sure the worm is RUNNING before starting collection!
+[*] Output: /home/greenballoons/499/DockerWormNetwork/ml/data/worm_traffic_exhaustive_6.csv
+[+] 10 samples written
+[+] 17 samples written
+[+] 20 samples written
+[+] 21 samples written
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/greenballoons/499/DockerWormNetwork/ml/scripts/collect_worm.py", line 128, in collect_worm_traffic
+    with ThreadPoolExecutor(max_workers=len(containers)) as pool:
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 144, in __init__
+    raise ValueError("max_workers must be greater than 0")
+ValueError: max_workers must be greater than 0
+Traceback (most recent call last):
+  File "/home/greenballoons/499/DockerWormNetwork/ml/scripts/mass_collect_4h.py", line 177, in <module>
+    main()
+  File "/home/greenballoons/499/DockerWormNetwork/ml/scripts/mass_collect_4h.py", line 164, in main
+    kill_worm_processes()
+  File "/home/greenballoons/499/DockerWormNetwork/ml/scripts/mass_collect_4h.py", line 85, in kill_worm_processes
+    subprocess.run(
+  File "/usr/lib/python3.10/subprocess.py", line 505, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.10/subprocess.py", line 1154, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.10/subprocess.py", line 2022, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+  File "/usr/lib/python3.10/subprocess.py", line 1198, in _check_timeout
+    raise TimeoutExpired(
+subprocess.TimeoutExpired: Command '['sudo', 'docker', 'exec', 'fileshare', 'pkill', '-f', 'worm.py']' timed out after 5 seconds
+[2026-05-05 10:45:00] Reset exit=0
+[2026-05-05 10:45:00] Waiting for api container...
+[2026-05-05 10:45:16] api container ready.
+[2026-05-05 10:45:16] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 10:45:16] Round 7  strategy=exhaustive  |  5/12 done  |  5.52h elapsed
+[2026-05-05 10:45:16] ─────────────────────────────────────────────────────────────────
+[2026-05-05 10:45:16]   [baseline] → baseline_traffic_exhaustive_7.csv
+[2026-05-05 11:33:19] Copying worm.py → shared_data/
+[2026-05-05 11:33:20] Launching worm inside api (strategy=exhaustive)...
+[2026-05-05 11:33:35] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 11:33:35]   [worm] → worm_traffic_exhaustive_7.csv
+[2026-05-05 11:41:30] Resetting lab...
+[2026-05-05 11:42:20] Reset exit=0
+[2026-05-05 11:42:20] Waiting for api container...
+[2026-05-05 11:42:37] api container ready.
+[2026-05-05 11:42:37] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 11:42:37] Round 8  strategy=random  |  6/12 done  |  6.47h elapsed
+[2026-05-05 11:42:37] ─────────────────────────────────────────────────────────────────
+[2026-05-05 11:42:37]   [baseline] → baseline_traffic_random_8.csv
+[2026-05-05 11:50:24] Copying worm.py → shared_data/
+[2026-05-05 11:50:24] Launching worm inside api (strategy=random)...
+[2026-05-05 11:50:39] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 11:50:39]   [worm] → worm_traffic_random_8.csv
+[2026-05-05 11:58:31] Resetting lab...
+[2026-05-05 11:59:19] Reset exit=0
+[2026-05-05 11:59:19] Waiting for api container...
+[2026-05-05 11:59:35] api container ready.
+[2026-05-05 11:59:35] 
+─────────────────────────────────────────────────────────────────
+[2026-05-05 11:59:35] Round 8  strategy=exhaustive  |  7/12 done  |  6.76h elapsed
+[2026-05-05 11:59:35] ─────────────────────────────────────────────────────────────────
+[2026-05-05 11:59:35]   [baseline] → baseline_traffic_exhaustive_8.csv
+[2026-05-05 12:07:21] Copying worm.py → shared_data/
+[2026-05-05 12:07:21] Launching worm inside api (strategy=exhaustive)...
+[2026-05-05 12:07:36] Worm deployed — beginning worm-traffic collection.
+[2026-05-05 12:07:36]   [worm] → worm_traffic_exhaustive_8.csv
+[2026-05-05 12:15:28] Resetting lab...
+[2026-05-05 12:16:17] Reset exit=0
+[2026-05-05 12:16:17] Waiting for api container...

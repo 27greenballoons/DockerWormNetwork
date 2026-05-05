@@ -1,0 +1,17 @@
+flask
+flask-login
+flask-sqlalchemy
+werkzeug
+pymysql
+cryptography
+
+requests
+
+docker
+
+xgboost
+scikit-learn
+pandas
+joblib
+psutil
+numpy

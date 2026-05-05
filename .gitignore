@@ -1,2 +1,12 @@
 GEMINI.md
+CODEBASE_COMPATIBILITY_REPORT.md
+DEPENDENCIES_REPORT.md
+CLAUDE.md
 mynotes.md
+.venv/
+python/__pycache__/
+*.pyc
+__pycache__/
+GUIDE.md
+paperstuff/
+shared_data/

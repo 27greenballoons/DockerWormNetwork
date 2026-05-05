@@ -58,8 +58,12 @@ class VulnerableHandler(http.server.SimpleHTTPRequestHandler):
             super().do_POST()
 
 if __name__ == '__main__':
-    with socketserver.TCPServer(("", 80), VulnerableHandler) as httpd:
-        print("[webserver] Vulnerable server running on port 80...")
+    import sys
+    port = 80
+    if '--port' in sys.argv:
+        port = int(sys.argv[sys.argv.index('--port') + 1])
+    with socketserver.TCPServer(("", port), VulnerableHandler) as httpd:
+        print(f"[webserver] Vulnerable server running on port {port}...")
         print("[webserver] Vulnerable endpoints:")
         print("[webserver]   GET /ping?ip=TARGET (Command Injection)")
         print("[webserver]   POST /exec (RCE)")

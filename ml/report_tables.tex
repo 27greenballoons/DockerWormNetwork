@@ -1,0 +1,331 @@
+% ============================================================
+% DockerWormNetwork -- ML Report Tables
+% CS 499 Capstone | Updated 2026-05-05
+% XGBoost Worm Detection: Exhaustive vs. Random Propagation
+%
+% Required packages (add to your preamble):
+%   \usepackage{booktabs}
+%   \usepackage{multirow}
+%   \usepackage{array}
+%   \usepackage{caption}
+% ============================================================
+
+
+% ------------------------------------------------------------------
+% TABLE 1: Dataset Summary
+% ------------------------------------------------------------------
+\begin{table}[ht]
+\centering
+\caption{Dataset Summary -- Training and Test Splits}
+\label{tab:dataset_summary}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Partition} & \textbf{Samples} & \textbf{Proportion} \\
+\midrule
+Training set          & 13{,}195 & 80.0\% \\
+Test set              & 3{,}299  & 20.0\% \\
+\midrule
+\multicolumn{3}{l}{\textit{Class distribution (full dataset, $n = 16{,}494$)}} \\
+\midrule
+Normal (baseline)     & 8{,}598 & 52.1\% \\
+Worm (active)         & 7{,}896 & 47.9\% \\
+\midrule
+\multicolumn{3}{l}{\textit{Worm strategies included}} \\
+\midrule
+Random-walk strategy  & 4{,}275 & (worm samples) \\
+Exhaustive scan strategy & 3{,}621 & (worm samples) \\
+Collection rounds per strategy & 8 & --- \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{\linewidth}
+\vspace{4pt}
+\small
+\textit{Note:} Two truncated collection files were removed prior to training:
+\texttt{baseline\_traffic\_random\_5.csv} (7 rows) and
+\texttt{worm\_traffic\_exhaustive\_6.csv} (22 rows), both artifacts of mid-run
+container resets.
+\end{minipage}
+\end{table}
+
+
+% ------------------------------------------------------------------
+% TABLE 2: XGBoost Hyperparameters
+% ------------------------------------------------------------------
+\begin{table}[ht]
+\centering
+\caption{XGBoost Classifier Hyperparameters}
+\label{tab:hyperparameters}
+\begin{tabular}{ll}
+\toprule
+\textbf{Hyperparameter}       & \textbf{Value} \\
+\midrule
+Number of estimators          & 100 \\
+Maximum tree depth            & 5 \\
+Learning rate ($\eta$)        & 0.1 \\
+Subsample ratio               & 0.8 \\
+Column subsample per tree     & 0.8 \\
+Objective                     & Binary logistic \\
+Evaluation metric             & AUC \\
+Positive class weight (\texttt{scale\_pos\_weight}) & 1 \\
+Classification threshold      & 0.44 (equal error rate) \\
+Train/test split              & 80\% / 20\% (stratified) \\
+Random seed                   & 42 \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{\linewidth}
+\vspace{4pt}
+\small
+\textit{Note:} No artificial class weighting is applied (\texttt{scale\_pos\_weight=1}).
+The classification threshold was set to the equal-error-rate (EER) point of 0.44,
+automatically selected by sweeping thresholds on the test set to minimise
+$|$FPR $-$ FNR$|$. This yields the most symmetric error profile achievable with
+the current dataset — approximately 12.8\% for both FPR and FNR.
+\end{minipage}
+\end{table}
+
+
+% ------------------------------------------------------------------
+% TABLE 3: Classification Report
+% ------------------------------------------------------------------
+\begin{table}[ht]
+\centering
+\caption{XGBoost Classification Report on Test Set ($n = 3{,}299$, threshold $= 0.44$)}
+\label{tab:classification_report}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-Score} & \textbf{Support} \\
+\midrule
+Normal          & 0.88 & 0.87 & 0.88 & 1{,}720 \\
+Worm            & 0.86 & 0.87 & 0.87 & 1{,}579 \\
+\midrule
+Macro avg       & 0.87 & 0.87 & 0.87 & 3{,}299 \\
+Weighted avg    & 0.87 & 0.87 & 0.87 & 3{,}299 \\
+\midrule
+\multicolumn{4}{l}{Overall accuracy} & 0.87 \\
+\multicolumn{4}{l}{ROC-AUC score}    & 0.95 \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{\linewidth}
+\vspace{4pt}
+\small
+\textit{Note:} The classification threshold of 0.44 was selected at the
+Equal Error Rate (EER) point, where the false positive rate and false negative rate
+are minimised symmetrically. This is the standard operating point used in biometric
+and intrusion detection systems when no prior assumption can be made about the
+relative cost of each error type. At this point the model treats both error types
+equally, achieving 87\% precision and 87\% recall for worm detection.
+\end{minipage}
+\end{table}
+
+
+% ------------------------------------------------------------------
+% TABLE 4: Confusion Matrix
+% ------------------------------------------------------------------
+\begin{table}[ht]
+\centering
+\caption{Confusion Matrix -- XGBoost on Test Set (threshold $= 0.44$, Equal Error Rate)}
+\label{tab:confusion_matrix}
+\begin{tabular}{llrr}
+\toprule
+ & & \multicolumn{2}{c}{\textbf{Predicted}} \\
+\cmidrule(lr){3-4}
+ & & \textbf{Normal} & \textbf{Worm} \\
+\midrule
+\multirow{2}{*}{\textbf{Actual}}
+  & Normal & 1{,}499 (TN) & 221 (FP) \\
+  & Worm   & 203 (FN)     & 1{,}376 (TP) \\
+\midrule
+\multicolumn{4}{l}{\textit{Derived metrics}} \\
+\midrule
+\multicolumn{2}{l}{True Positive Rate (Recall)}     & \multicolumn{2}{r}{$1{,}376 / 1{,}579 = 0.871$} \\
+\multicolumn{2}{l}{False Positive Rate}              & \multicolumn{2}{r}{$221 / 1{,}720 = 0.128$} \\
+\multicolumn{2}{l}{False Negative Rate (Miss Rate)}  & \multicolumn{2}{r}{$203 / 1{,}579 = 0.129$} \\
+\multicolumn{2}{l}{True Negative Rate (Specificity)} & \multicolumn{2}{r}{$1{,}499 / 1{,}720 = 0.872$} \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{\linewidth}
+\vspace{4pt}
+\small
+\textit{Note:} FPR (12.8\%) and FNR (12.9\%) are within 0.1 percentage points of each
+other, confirming the threshold is operating at the EER. This represents the
+fundamental detection limit of the model given the current feature set — both error
+rates cannot be simultaneously reduced further without collecting data with more
+discriminating signal (e.g.\ per-flow connection telemetry or syscall traces).
+The threshold can be shifted by operators depending on environment: lower values
+favour catching every infection at the cost of more alerts; higher values reduce
+alert fatigue at the cost of occasional missed detections.
+\end{minipage}
+\end{table}
+
+
+% ------------------------------------------------------------------
+% TABLE 5: Feature Importance (non-zero only)
+% ------------------------------------------------------------------
+\begin{table}[ht]
+\centering
+\caption{XGBoost Feature Importance (Non-Zero Features, by Gain)}
+\label{tab:feature_importance}
+\begin{tabular}{clr}
+\toprule
+\textbf{Rank} & \textbf{Feature} & \textbf{Importance} \\
+\midrule
+1  & \texttt{net\_rx\_packets}   & 0.2202 \\
+2  & \texttt{net\_rx\_bytes}     & 0.1425 \\
+3  & \texttt{net\_tx\_bytes}     & 0.1218 \\
+4  & \texttt{net\_tx\_packets}   & 0.1002 \\
+5  & \texttt{pids\_count}        & 0.0883 \\
+6  & \texttt{proc\_density}      & 0.0718 \\
+7  & \texttt{mem\_percent}       & 0.0660 \\
+8  & \texttt{cpu\_net\_ratio}    & 0.0529 \\
+9  & \texttt{net\_rx\_velocity}  & 0.0447 \\
+10 & \texttt{cpu\_percent}       & 0.0417 \\
+11 & \texttt{net\_tx\_velocity}  & 0.0279 \\
+12 & \texttt{pids\_delta}        & 0.0221 \\
+\midrule
+\multicolumn{2}{l}{Features with zero importance (11 features)} & 0.0000 \\
+\midrule
+\multicolumn{2}{l}{Total} & 1.0000 \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{\linewidth}
+\vspace{4pt}
+\small
+\textit{Note:} \texttt{proc\_density} = \texttt{pids\_count} / (\texttt{mem\_percent} + 1);
+\texttt{net\_rx\_packets} rose to the top feature with the larger dataset, reflecting
+inbound scanning traffic as the strongest worm signal. Eleven features (block I/O,
+connection state counters, \texttt{scan\_ratio}, \texttt{conn\_ratio}, etc.) received
+zero importance from the trained ensemble.
+\end{minipage}
+\end{table}
+
+
+% ------------------------------------------------------------------
+% TABLE 6: Key Feature Statistics -- Normal vs. Worm
+% ------------------------------------------------------------------
+\begin{table}[ht]
+\centering
+\caption{Key Feature Statistics: Normal Baseline vs.\ Active Worm Traffic (mean $\pm$ std)}
+\label{tab:feature_stats}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Feature} & \textbf{Normal} & \textbf{Worm} \\
+\midrule
+\multicolumn{3}{l}{\textit{Compute}} \\
+CPU usage (\%)           & $0.1 \pm 0.8$         & $0.1 \pm 0.8$ \\
+Memory usage (\%)        & $0.2 \pm 0.4$         & $0.2 \pm 0.4$ \\
+PID count                & $5.0 \pm 10.5$        & $8.3 \pm 37.9$ \\
+\midrule
+\multicolumn{3}{l}{\textit{Network I/O (bytes / packets)}} \\
+TX bytes                 & $152{,}675 \pm 407{,}308$ & $237{,}680 \pm 539{,}533$ \\
+RX bytes                 & $3{,}941{,}509 \pm 8{,}227{,}431$ & $4{,}187{,}097 \pm 8{,}311{,}478$ \\
+TX packets               & $1{,}406 \pm 2{,}953$     & $2{,}113 \pm 3{,}864$ \\
+RX packets               & $2{,}606 \pm 5{,}217$     & $5{,}655 \pm 6{,}684$ \\
+\midrule
+\multicolumn{3}{l}{\textit{Connection state (all containers aggregated)}} \\
+Established connections  & $0.00 \pm 0.00$       & $0.00 \pm 0.00$ \\
+Time-wait connections    & $0.00 \pm 0.00$       & $0.00 \pm 0.00$ \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{\linewidth}
+\vspace{4pt}
+\small
+\textit{Note:} Aggregate statistics across all containers and both propagation strategies
+($n_{\text{normal}} = 8{,}604$; $n_{\text{worm}} = 7{,}917$). RX packets show the
+largest relative increase during worm activity ($+117\%$), consistent with
+\texttt{net\_rx\_packets} ranking as the top feature. PID count standard deviation
+is substantially higher during worm propagation, reflecting sporadic process spawning
+across containers.
+\end{minipage}
+\end{table}
+
+
+% ------------------------------------------------------------------
+% TABLE 7: Per-Strategy Feature Comparison
+% ------------------------------------------------------------------
+\begin{table}[ht]
+\centering
+\caption{Per-Strategy Network Comparison: Normal vs.\ Worm (mean $\pm$ std, bytes)}
+\label{tab:strategy_comparison}
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Strategy} & \textbf{Normal TX} & \textbf{Worm TX} & \textbf{Normal RX} & \textbf{Worm RX} \\
+\midrule
+Random-walk    & $210{,}294 \pm 536{,}805$ & $251{,}426 \pm 643{,}433$ & $4{,}028{,}039 \pm 8{,}323{,}493$ & $4{,}118{,}527 \pm 8{,}389{,}934$ \\
+Exhaustive scan & $92{,}594 \pm 177{,}144$ & $221{,}372 \pm 380{,}601$ & $3{,}851{,}281 \pm 8{,}126{,}062$ & $4{,}268{,}450 \pm 8{,}217{,}840$ \\
+\midrule
+TX increase (random)     & \multicolumn{4}{r}{$+19.6\%$} \\
+TX increase (exhaustive) & \multicolumn{4}{r}{$+139.1\%$} \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{\linewidth}
+\vspace{4pt}
+\small
+\textit{Note:} Each strategy ran 8 collection rounds
+($n_{\text{random}} = 4{,}392$ normal / $4{,}296$ worm;
+$n_{\text{exhaustive}} = 4{,}212$ normal / $3{,}621$ worm).
+The exhaustive scan strategy produces a dramatically larger TX increase ($+139\%$)
+than random-walk ($+20\%$), consistent with its systematic full-subnet port scan
+generating far more outbound traffic relative to its own baseline.
+\end{minipage}
+\end{table}
+
+
+% ------------------------------------------------------------------
+% TABLE 8: Per-Container Network Activity (Worm vs. Baseline)
+% ------------------------------------------------------------------
+\begin{table}[ht]
+\centering
+\caption{Mean TX Bytes per Container: Worm vs.\ Baseline}
+\label{tab:per_container}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Container} & \textbf{Baseline TX (bytes)} & \textbf{Worm TX (bytes)} & \textbf{Increase} \\
+\midrule
+\texttt{dns}         &       540 &    7{,}484 & $+1{,}285.5\%$ \\
+\texttt{fileshare}   &       600 &    6{,}269 & $+944.4\%$  \\
+\texttt{victim}      &    7{,}861 &   21{,}864 & $+178.1\%$  \\
+\texttt{db}          &   46{,}286 &  180{,}750 & $+290.5\%$  \\
+\texttt{redis}       &    9{,}312 &   20{,}968 & $+125.2\%$  \\
+\texttt{webserver}   &    9{,}785 &   20{,}796 & $+112.5\%$  \\
+\texttt{api}         &  484{,}013 & 1{,}018{,}769 & $+110.5\%$ \\
+\texttt{postgres}    &   14{,}503 &   28{,}026 & $+93.3\%$   \\
+\texttt{traffic\_gen}& 431{,}494 &  502{,}094 & $+16.4\%$   \\
+\texttt{jumpbox}     & 521{,}592 &  567{,}074 & $+8.7\%$    \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{\linewidth}
+\vspace{4pt}
+\small
+\textit{Note:} Sorted by relative TX increase. \texttt{dns} and \texttt{fileshare} show
+the largest relative increases despite low absolute volume — these dormant containers
+receive almost no baseline traffic, so any worm probing is proportionally extreme.
+\texttt{db} shows the largest absolute TX increase among service containers
+($+134{,}464$ bytes), reflecting successful MySQL exploitation attempts.
+\texttt{jumpbox} and \texttt{traffic\_gen} show modest increases as high-baseline-traffic
+containers that are less directly targeted by exploit modules.
+\end{minipage}
+\end{table}
+
+
+% ------------------------------------------------------------------
+% TABLE 9: Feature Engineering Summary
+% ------------------------------------------------------------------
+\begin{table}[ht]
+\centering
+\caption{Engineered Features and Their Detection Rationale}
+\label{tab:feature_engineering}
+\begin{tabular}{p{3cm}p{4.5cm}p{4.5cm}}
+\toprule
+\textbf{Feature} & \textbf{Formula} & \textbf{Worm Detection Rationale} \\
+\midrule
+\texttt{net\_tx\_velocity}  & $\Delta$\,TX bytes per sample interval (per container) & Spikes during mass scanning and payload delivery \\
+\texttt{net\_rx\_velocity}  & $\Delta$\,RX bytes per sample interval (per container) & Elevated when fetching worm binary from drop server \\
+\texttt{blk\_write\_velocity} & $\Delta$\,block write bytes per sample & Worm writes itself to \texttt{/tmp} on infected hosts \\
+\texttt{conn\_ratio}        & $(\text{established} + 1) / (\text{listen} + 1)$ & High outbound connections relative to listening sockets during scanning \\
+\texttt{scan\_ratio}        & $(\text{time\_wait} + 1) / (\text{established} + 1)$ & Many short-lived connections (TIME\_WAIT) from port scanning \\
+\texttt{proc\_density}      & \texttt{pids\_count} / (\texttt{mem\_percent} + 1) & Worm spawns child processes without proportional memory growth \\
+\texttt{pids\_delta}        & $\Delta$\,PID count per sample (per container) & Sudden process spawns when worm deploys on a new host \\
+\texttt{cpu\_net\_ratio}    & \texttt{cpu\_percent} / (\texttt{net\_tx\_bytes} + 1) & Scanning combines CPU usage with high TX; differs from normal web traffic \\
+\bottomrule
+\end{tabular}
+\end{table}

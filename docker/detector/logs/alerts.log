@@ -1,0 +1,19 @@
+[2026-05-05 19:39:37] WORM DETECTED on traffic_gen — confidence 60.90%
+[2026-05-05 19:41:36] WORM DETECTED on victim — confidence 60.58%
+[2026-05-05 19:42:57] CLEARED traffic_gen — confidence 29.04%
+[2026-05-05 19:44:24] WORM DETECTED on api — confidence 70.09%
+[2026-05-05 19:46:43] WORM DETECTED on db — confidence 50.54%
+[2026-05-05 19:47:06] CLEARED db — confidence 46.02%
+[2026-05-05 19:47:26] WORM DETECTED on postgres — confidence 53.23%
+[2026-05-05 19:47:54] CLEARED victim — confidence 49.68%
+[2026-05-05 19:48:17] WORM DETECTED on victim — confidence 50.90%
+[2026-05-05 19:48:18] WORM DETECTED on redis — confidence 52.36%
+[2026-05-05 19:48:37] WORM DETECTED on webserver — confidence 57.96%
+[2026-05-05 19:48:39] CLEARED victim — confidence 49.97%
+[2026-05-05 19:48:41] CLEARED redis — confidence 49.94%
+[2026-05-05 19:49:01] WORM DETECTED on victim — confidence 91.18%
+[2026-05-05 19:49:03] WORM DETECTED on redis — confidence 91.66%
+[2026-05-05 19:49:05] WORM DETECTED on dns — confidence 70.33%
+[2026-05-05 19:49:07] WORM DETECTED on fileshare — confidence 79.44%
+[2026-05-05 19:49:15] WORM DETECTED on traffic_gen — confidence 88.94%
+[2026-05-05 19:49:19] WORM DETECTED on db — confidence 97.33%

